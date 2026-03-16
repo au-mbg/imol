@@ -7,8 +7,18 @@ website:
     left:
       - href: index.qmd
         text: Home
+        icon: house
       - href: python_intro/index.qmd
         text: Python Intro
+        icon: code-slash
+
+  sidebar: 
+    - id: python-intro-sidebar
+      style: "docked"
+      contents:
+        - section: "Python Intro"
+          contents:
+            - python_intro/python_intro.qmd
 
 format:
   html:
