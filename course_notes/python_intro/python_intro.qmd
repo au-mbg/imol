@@ -1,0 +1,231 @@
+---
+title: Getting Started with Python
+format: 
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+---
+
+Python is a programming language that is widely used in the scientific community (and for many other things). You will be using Python in various contexts during your studies - ranging from data analysis through plotting to bioinformatics. 
+
+At first Python may seem strange and difficult - it is a different way to think compared 
+to what you might be used to. However, with practice and patience you will become familiar with it and be able to use it to learn and do science in ways that would not be possible without it.
+
+## Programming languages
+
+You have almost certainly used something that works like a programming language before — you may simply not have thought about it that way. For example, a calculator uses a programming language of sorts - it has a set of inputs (numbers) and a set of operations (add, substract, multiply, divide, etc) that can be composed together to perform a calculation. Python can do the same, and much more, for example
+
+```{pyodide}
+1 + 2 + 3
+```
+
+::: {.callout-important}
+This is an interactive code-block that runs Python in the browser. You can click the {{< bi play >}} **Run Code** button to perform the calculation. 
+:::
+
+### Exercise: Change the calculation.
+
+You can edit the code in the cell above just click on the the line with code and you can start typing. Try for example calculating $1 + 2 + 3 + 4$ rather than the original calculation. 
+
+### Exercise: Other programming languages
+
+If we define a programming language as 
+
+> A programming language is a way of writing precise instructions that tell a computer what operations to perform and in what order.
+
+Think of other systems you have used that might qualify as a programming language.
+They should allow you to combine operations or instructions to produce a result.
+
+## Python as a calculator 
+
+All operations you're used to for a regular handheld calculator exist in Python 
+
+```python
+1 + 1       # Addition with +
+3 - 1       # Subtraction with - 
+4 * 4       # Multiplication with *
+20 / 5      # Division with /
+```
+
+### Exercise: Calculate, calculate, calculate
+
+Use the interactive cell below to perform the following calculations 
+
+1. $21 + 21$
+2. $53 - 11$
+3. $6 \times 7$
+4. $\frac{546}{13}$
+
+```{pyodide}
+#| exercise: calculation_exercise
+#| check: true
+if (result == 42):
+  feedback = { "correct": True, "message": "That's correct. Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, try again." }
+feedback
+```
+
+```{pyodide}
+#| exercise: calculation_exercise
+______
+```
+
+## Variables 
+
+To really unlock the utility of Python variables are required, among other things 
+they allow us to express calculations in a simpler way. A variable is defined by using `=`, for example, we can define 
+
+```python
+a = 21 + 21
+```
+This means that the result of the calculation is stored in the variable `a` and 
+can be used in subsequent calculations. 
+
+### Exercise: Calculations with variables
+
+Repeat the calculations
+
+1. $21 + 21$
+2. $53 - 11$
+3. $6 \times 7$
+4. $\frac{546}{13}$
+
+But now assign each of them to a variable `a`, `b` `c` etc and then calculate 
+
+$$
+(21 + 21) + (53 - 11) + (6 \times 7) + \frac{546}{13}
+$$
+using these variables
+
+```{pyodide}
+#| exercise: variable_exercise
+#| check: true
+if a + b + c + d + f == 42 * 8:
+  feedback = { "correct": True, "message": "That's correct. Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, try again." }
+feedback
+```
+
+```{pyodide}
+#| exercise: variable_exercise
+a = ______ # Replace the ______ with your code
+b = ______
+c = ______
+d = ______
+f = ______ # Do not use any numbers on this line.
+
+print(a, b, c, d, f)
+```
+
+::: {.callout-note}
+The cell above used a new thing `print`. This is a *function*, functions are like recipe - they 
+take a number of inputs (ingredients) and perform some predefined set of operations on those 
+and return an output. 
+
+The `print`-function prints what it is given to the screen - in this case the five variables. 
+You will and use the `print`-function numerous times. 
+::: 
+
+### Exercise: A biological calculation
+
+The number of cells in different parts of the body is given below 
+
+| Type | Number of cells | 
+| ---- | --------------- |
+| Total cells | $37 \cdot 10^{12}$ | 
+| Brain cells | $86 \cdot 10^{9}$  | 
+| Liver cells | $240 \cdot 10^9$   | 
+| Skin cells  | $1.6 \cdot 10^{11}$| 
+
+For each cell type, calculate the percentage each category represents of the total number of cells in the body, i.e., for each category calculate 
+
+$$
+P = \frac{\mathrm{Number}}{\mathrm{Total}} \times 100.
+$$
+
+```{pyodide}
+#| exercise: biological_calculation_exercise
+#| check: true
+correct_total_cells = 37_000_000_000_000
+correct_brain_cells = 86_000_000_000
+correct_liver_cells = 240_000_000_000
+correct_skin_cells = 1_600_000_000_000
+
+correct_brain_pct = brain_cells / total_cells * 100
+correct_liver_pct = liver_cells / total_cells * 100
+correct_skin_pct = skin_cells / total_cells * 100
+
+feedback = {"correct": True, "message": "Sorry... "}
+
+if correct_total_cells != total_cells:
+    feedback["correct"] = False
+    feedback["message"] += "The number of total cells is incorrect\n"
+if correct_brain_cells != brain_cells: 
+    feedback["correct"] = False
+    feedback["message"] += "The number of brain cells is incorrect\n"
+if correct_liver_cells != liver_cells:
+    feedback["correct"] = False
+    feedback["message"] += "The number of liver cells is incorrect\n"
+if correct_skin_cells != skin_cells:
+    feedback["correct"] = False
+    feedback["message"] += "The number of skin cells is incorrect\n"
+
+if abs(correct_brain_pct - brain_pct) > 10**(-5): 
+    feedback["correct"] = False
+    feedback["message"] += "The percentage of brain cells is not correctly calculated"
+if abs(correct_liver_pct - liver_pct) > 10**(-5): 
+    feedback["correct"] = False
+    feedback["message"] += "The percentage of liver cells is not correctly calculated"
+if abs(correct_skin_pct - skin_pct) > 10**(-5): 
+    feedback["correct"] = False
+    feedback["message"] += "The percentage of skin cells is not correctly calculated"
+
+if feedback["correct"]:
+    feedback["message"] = "That's correct! Good job"
+
+feedback
+```
+
+```{pyodide}
+#| exercise: biological_calculation_exercise
+# Make variables for the different number of cells
+total_cells = ______
+brain_cells = ______
+liver_cells = ______
+skin_cells = ______
+
+# Calculate the percentages - use the variables!
+brain_pct = ______
+liver_pct = ______
+skin_pct = ______
+
+# Print the results
+print("Brain cell percentage: ", brain_pct)
+print("Liver cell percentage: ", liver_pct)
+print("Skin cell percentage: ", skin_pct)
+```
+
+::: callout-tip
+The numbers of cells is rather large, so typing the correct amount of zeros is a 
+little painful. The code below shows four different ways of writing the same number in 
+Python code
+
+```python
+13000000000000     # Basic
+13_000_000_000_000 # Underscores to visually distinguish
+13 * 10**(12)      # Using exponentation 
+13E12              # Scientific notation
+```
+:::
+
+
+
+
+
