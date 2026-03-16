@@ -142,7 +142,7 @@ The number of cells in different parts of the body is given below
 | Total cells | $37 \cdot 10^{12}$ | 
 | Brain cells | $86 \cdot 10^{9}$  | 
 | Liver cells | $240 \cdot 10^9$   | 
-| Skin cells  | $1.6 \cdot 10^{11}$| 
+| Skin cells  | $16 \cdot 10^{11}$| 
 
 For each cell type, calculate the percentage each category represents of the total number of cells in the body, i.e., for each category calculate 
 
@@ -213,7 +213,7 @@ print("Skin cell percentage: ", skin_pct)
 ```
 
 ::: callout-tip
-The numbers of cells is rather large, so typing the correct amount of zeros is a 
+The numbers of cells are rather large, so typing the correct amount of zeros is a 
 little painful. The code below shows four different ways of writing the same number in 
 Python code
 
