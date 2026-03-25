@@ -101,7 +101,7 @@ But now assign each of them to a variable `a`, `b` `c` etc and then calculate
 $$
 (21 + 21) + (53 - 11) + (6 \times 7) + \frac{546}{13}
 $$
-using these variables
+using these variables. In the cell below replace `______` with your code
 
 ```{pyodide}
 #| exercise: variable_exercise
@@ -115,7 +115,7 @@ feedback
 
 ```{pyodide}
 #| exercise: variable_exercise
-a = ______ # Replace the ______ with your code
+a = ______ 
 b = ______
 c = ______
 d = ______
