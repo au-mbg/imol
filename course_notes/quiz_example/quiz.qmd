@@ -1,0 +1,27 @@
+---
+title: "Example Quiz"
+filters:
+  - shinylive
+---
+
+:::{.column-screen-inset}
+```{shinylive-python}
+#| standalone: true
+#| viewerHeight: 1200
+## file: app.py
+from mcqpy_shiny.embed_app import create_app
+
+app = create_app(
+    fixed_url=None,
+    fixed_token="mcqpy:aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2F1LW1iZy9tY3FweS9yZWZzL2hlYWRzL21haW4vZXhhbXBsZXMvZXhhbXBsZS1zaGlueS9xdWl6Lmpzb24",
+    allow_manual_load=True,
+    title=None,
+    card_width='900px',
+)
+## file: requirements.txt
+shiny>=1.2.1
+pydantic
+mcqpy-core
+mcqpy-shiny
+```
+:::

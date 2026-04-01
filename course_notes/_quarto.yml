@@ -11,6 +11,9 @@ website:
       - href: python_intro/index.qmd
         text: Python Intro
         icon: code-slash
+      - href: quiz_example/quiz.qmd
+        text: Quiz Example
+        icon: question
 
   sidebar: 
     - id: python-intro-sidebar
