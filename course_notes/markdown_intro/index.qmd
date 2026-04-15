@@ -1,0 +1,81 @@
+---
+title: Introduction to Markdown
+sidebar: markdown-intro-sidebar
+---
+
+Markdown is a simple way of writing formatted text using plain characters. It is useful because the same ideas show up later in Jupyter notebooks, README files, and many scientific writing tools.
+
+The goal here is not to learn every Markdown feature. It is to learn a small, controlled subset:
+
+1. Headings
+2. Bold and italic text
+3. Lists
+4. Links
+5. Inline code and code blocks
+
+## Try Markdown
+
+Edit the text on the left and watch the rendered result on the right.
+
+```{=html}
+<div class="markdown-playground">
+<div class="markdown-playground__grid">
+  <div class="markdown-playground__panel">
+    <div class="markdown-playground__toolbar">
+      <span>Markdown Input</span>
+      <button type="button" class="btn btn-sm btn-outline-secondary" data-markdown-reset>Reset</button>
+    </div>
+    <textarea class="markdown-playground__input" data-markdown-input spellcheck="false"># My first Markdown note
+
+This is **bold text**, this is *italic text*, and this is `inline code`.
+
+## Shopping list
+
+- apples
+- bananas
+- coffee
+
+## Steps
+
+1. Open the page
+2. Edit the text
+3. Look at the preview
+
+> Markdown lets you write simple formatted text without using many buttons.
+
+Visit [Quarto](https://quarto.org) to see another Markdown-based tool.
+```python
+print("Hello from a code block")
+```</textarea>
+  </div>
+  <div class="markdown-playground__panel">
+    <div class="markdown-playground__toolbar">
+      <span>Rendered Preview</span>
+    </div>
+    <div class="markdown-playground__preview" data-markdown-preview></div>
+  </div>
+</div>
+</div>
+```
+
+## Quick Reference
+
+| You write | It becomes |
+| --- | --- |
+| `# Heading` | Large heading |
+| `## Heading` | Smaller heading |
+| `**word**` | **word** |
+| `*word*` | *word* |
+| `` `code` `` | `code` |
+| `- item` | Bullet point |
+| `1. item` | Numbered list |
+| `[text](https://example.com)` | Link |
+
+## Teaching Use
+
+This editor is intentionally smaller and stricter than a full notebook environment. That fits your course goal well: students can practice the core idea of Markdown without being distracted by notebook controls, menus, or file state.
+
+Later, when they move to Google Colab or Jupyter, they can transfer two ideas at once:
+
+1. A code cell contains Python.
+2. A text cell contains Markdown.

@@ -11,6 +11,9 @@ website:
       - href: python_intro/index.qmd
         text: Python Intro
         icon: code-slash
+      - href: markdown_intro/index.qmd
+        text: Markdown Intro
+        icon: markdown
       - href: quiz_example/quiz.qmd
         text: Quiz Example
         icon: question
@@ -22,15 +25,22 @@ website:
         - section: "Python Intro"
           contents:
             - python_intro/python_intro.qmd
+            - python_intro/python_data.qmd
+    - id: markdown-intro-sidebar
+      style: "docked"
+      contents:
+        - section: "Markdown Intro"
+          contents:
+            - markdown_intro/index.qmd
 
 format:
   html:
     toc: true
     number-sections: true
     css: styling/styles.css
+    include-after-body: styling/markdown-playground.html
     theme:
       light: cosmo
       dark: [darkly, styling/theme-dark.scss]
     respect-user-color-scheme: true
-
 

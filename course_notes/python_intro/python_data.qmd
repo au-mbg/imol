@@ -1,0 +1,134 @@
+---
+title: Working with data
+format: 
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+
+pyodide:
+  packages:
+    - pandas
+    - openpyxl
+---
+
+## Python 
+
+::: {.upload-panel}
+
+```{ojs}
+//| echo: false
+viewof csv_file = Inputs.file({
+  label: "Upload CSV file",
+  accept: ".csv",
+  required: false
+})
+
+csv_text = csv_file ? await csv_file.text() : null
+csv_name = csv_file ? csv_file.name : null
+```
+
+:::
+
+This uses an `ojs` file input rather than an `ipywidgets.FileUpload`. The intended workflow is: upload the file, run the next Python cell to create `df`, then run later cells manually.
+
+```{pyodide}
+#| echo: false
+#| input:
+#|   - csv_text
+#|   - csv_name
+import io
+import pandas as pd
+
+def _is_missing(value):
+    return value is None or type(value).__name__ in {"JsNull", "JsUndefined"}
+
+
+if _is_missing(csv_text):
+    print("Upload a CSV file to create a DataFrame.")
+else:
+    df = pd.read_csv(io.StringIO(csv_text))
+    print(f"Uploaded: {csv_name}")
+    print(f"Shape: {df.shape[0]} rows x {df.shape[1]} columns")
+    display(df)
+```
+
+```{pyodide}
+df.describe(include="all")
+```
+
+```{pyodide}
+numeric_columns = df.select_dtypes(include="number").columns.tolist()
+print("Numeric columns:", numeric_columns)
+
+if numeric_columns:
+    display(df[numeric_columns].mean().rename("mean"))
+```
+
+## Excel Upload
+
+This is the same manual workflow, but for `.xlsx` files. The likely Excel engine here is `calamine`, not `openpyxl`.
+
+::: {.upload-panel}
+
+```{ojs}
+//| echo: false
+viewof xlsx_file = Inputs.file({
+  label: "Upload Excel file",
+  accept: ".xlsx",
+  required: false
+})
+
+xlsx_name = xlsx_file ? xlsx_file.name : null
+xlsx_bytes = xlsx_file
+  ? Array.from(new Uint8Array(await xlsx_file.arrayBuffer()))
+  : null
+```
+
+:::
+
+```{pyodide}
+#| echo: false
+#| input:
+#|   - xlsx_bytes
+#|   - xlsx_name
+import io
+import pandas as pd
+
+def _is_missing(value):
+    return value is None or type(value).__name__ in {"JsNull", "JsUndefined"}
+
+
+if _is_missing(xlsx_bytes):
+    print("Upload an Excel file to create excel_df.")
+else:
+    excel_df = pd.read_excel(
+        io.BytesIO(bytes(xlsx_bytes)),
+    )
+    print(f"Uploaded: {xlsx_name}")
+    print(f"Shape: {excel_df.shape[0]} rows x {excel_df.shape[1]} columns")
+    display(excel_df)
+```
+
+```{pyodide}
+excel_df.describe(include="all")
+```
+
+```{pyodide}
+excel_numeric_columns = excel_df.select_dtypes(include="number").columns.tolist()
+print("Numeric columns:", excel_numeric_columns)
+
+if excel_numeric_columns:
+    display(excel_df[excel_numeric_columns].mean().rename("mean"))
+```
+
+```{pyodide}
+import matplotlib.pyplot as plt
+excel_df.plot(x='time', y='signal')
+
+plt.show()
+```

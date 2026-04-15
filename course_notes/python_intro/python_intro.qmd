@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Python
+title: Getting started
 format: 
   live-html:
     toc: true
@@ -225,7 +225,164 @@ Python code
 ```
 :::
 
+## Functions 
+
+When doing repeated calculations it is generally good practice to define a function. Consider 
+for example that you need to calculate the average of several sets of numbers, without using 
+functions we could write 
+
+```python
+A = 1
+B = 2
+C = 3
+D = 4
+
+average_AB = (A + B) / 2
+average_BC = (B + C) / 2
+average_CD = (C + D) / 2
+```
+
+This is perfectly valid, but it is more prone to error - as we have to write the expression 
+multiple times - and it is harder for someone else to decipher - as they have to check they understand 
+what each line of code does. If we instead used a function 
+
+```python
+A = 1
+B = 2
+C = 3
+D = 4
+
+def average(x, y):
+  return (x + y) / 2
+
+average_AB = average(A, B)
+average_BC = average(B, C)
+average_CD = average(D, C)
+```
+
+Now all the logic of calculating the average is contained in the `average` function so we only have one place to check for errors.
+
+::: {.callout-note title="A note on functions"}
+
+Functions use specific syntax, meaning they have to be written following a set of rules
+
+```python
+def percentage(number, total): # <1>
+  intermediate_calculation = number / total # <2>
+  final_result = intermediate_calculation * 100
+  return final_result # <3>
+```
+
+1. The function is defined with `def` and its name (here `percentage`) and its inputs `(number, total)`.
+2. The body of the function is indented by 4 spaces (or 1 tab). The body can consist of as many lines as needed.
+3. `return` exits the function and returns the variable that follows - here `final_result`. If a function doesn't have a `return` or just has `return` without any variables it implicitly returns `None`.
+
+Using a function requires "calling" it, this means giving it the inputs it expects - like below
+
+```python
+result = percentage(1, 2)
+```
+
+This code will calculate the function with `number=1` and `total=2` and assign the returned value to `result`. Outside the function the variables `intermediate_calculation` and `final_result` are not available (we would say they are out of scope). There's also nothing special about the names, they are just variables like anywhere else, they could just aswell have been called `nemo_the_fish` or `min_endelige_beregning_af_gennemsnittet_foretaget_mandag_den_13_april` but its a good idea to give variables descriptive but short names. 
+
+Only what was returned by the function is available outside the function and if it needs to used later on in the code it needs to be saved to its own variable, so we can think of the code above like
+
+1. `percentage(1, 2)` calculates and returns `final_result`. 
+2. Whatever is returned is assigned to the variable `result`.
+
+:::
+
+### Exercise: Functions, calling, assignment and scopes
+
+```{pyodide}
+#| autorun: true
+#| echo: true
+# A function that calculates something but doesn't return it
+def function_without_return(A, B):
+  result = A * B 
+  print("Inside function_without_return: ", result)
+
+# A function that calculates something and returns it.
+def function_with_return(A, B):
+  result = A * B
+  print("Inside function_with_return: ", result)
+  return result
+```
+
+The code block above defines two functions.
+
+Use the interactive codeblock below to answer these questions. Below there are 
+three code blocks that use these functions and an accompanying question. 
+
+You are not expected to give technically precise answers, just describe it in your own words.
+For each question you can play around with the interactive or the definition of the functions above to help you answer.
+
+#### Without assignment
+
+What happens when the functions are called but the output not assigned?
+
+```{pyodide}
+# Call the functions but don't assign to a variable
+print('Calling functions without assigning to a variable')
+function_without_return(6, 7)
+function_with_return(6, 7)
+
+print('End of cell')
+```
+
+#### With assignment
+
+What happens when the functions are called and the output is assigned?
+
+```{pyodide}
+print('Calling functions and assigning')
+without_return = function_without_return(6, 7)
+with_return = function_with_return(6, 7)
+
+print('without_return: ', without_return)
+print('with_return: ', with_return)
+print('End of cell')
+```
+
+#### Without calling
+
+What happens when you assign the function itself to a variable without calling it? 
+
+```{pyodide}
+print('Assigning to a variable but not actually calling')
+without_return_no_call = function_without_return
+with_return_no_call = function_with_return
+
+print('without_return_no_call: ', without_return_no_call)
+print('with_return_no_call: ', with_return_no_call)
+print('End of cell')
+```
 
 
+### Exercise: A biological calculation with a function.
 
+Repeat the calculation of cell percentages but now using the `percentage` function defined below
 
+```{pyodide}
+
+# Define a function to calculate the percentage
+def percentage(number, total):
+  # This function is equivalent to the one shown above, just a little more concise. 
+  return number / total * 100
+
+# Make variables for the different number of cells
+total_cells = 37_000_000_000_000
+brain_cells = 86_000_000_000
+liver_cells = 240_000_000_000
+skin_cells = 1_600_000_000_000
+
+# Calculate the percentages - use the variables!
+brain_pct = ______
+liver_pct = ______
+skin_pct = ______
+
+# Print the results
+print("Brain cell percentage: ", brain_pct)
+print("Liver cell percentage: ", liver_pct)
+print("Skin cell percentage: ", skin_pct)
+```
