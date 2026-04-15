@@ -14,3 +14,6 @@ wheels/
 course_notes/.quarto/
 **/*.quarto_ipynb
 course_notes/_site/
+# pixi environments
+.pixi/*
+!.pixi/config.toml

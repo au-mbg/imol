@@ -1,0 +1,26 @@
+[workspace]
+authors = ["Mads-Peter <machri@phys.au.dk>"]
+channels = ["conda-forge"]
+name = "imol"
+platforms = ["osx-arm64", "linux-64", "osx-64", "win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[tasks.render]
+cmd = "quarto render"
+cwd = "course_notes"
+
+[tasks.preview]
+cmd = "quarto preview"
+cwd = "course_notes"
+
+[dependencies]
+python = ">=3.14.4,<3.15"
+quarto = ">=1.8.27,<2"
+
+[pypi-dependencies]
+ipywidgets = ">=8.1.8, <9"
+jupyter = ">=1.1.1, <2"
+numpy = ">=2.4.4, <3"
+shinylive = ">=0.8.6, <0.9"
