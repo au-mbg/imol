@@ -115,7 +115,7 @@ feedback
 
 ```{pyodide}
 #| exercise: variable_exercise
-a = ______ 
+a = ______
 b = ______
 c = ______
 d = ______
@@ -364,7 +364,37 @@ print('End of cell')
 Repeat the calculation of cell percentages but now using the `percentage` function defined below
 
 ```{pyodide}
+#| exercise: biological_calculation_exercise_func
+#| check: true
+correct_total_cells = 37_000_000_000_000
+correct_brain_cells = 86_000_000_000
+correct_liver_cells = 240_000_000_000
+correct_skin_cells = 1_600_000_000_000
 
+correct_brain_pct = brain_cells / total_cells * 100
+correct_liver_pct = liver_cells / total_cells * 100
+correct_skin_pct = skin_cells / total_cells * 100
+
+feedback = {"correct": True, "message": "Sorry... "}
+
+if abs(correct_brain_pct - brain_pct) > 10**(-5): 
+    feedback["correct"] = False
+    feedback["message"] += "The percentage of brain cells is not correctly calculated"
+if abs(correct_liver_pct - liver_pct) > 10**(-5): 
+    feedback["correct"] = False
+    feedback["message"] += "The percentage of liver cells is not correctly calculated"
+if abs(correct_skin_pct - skin_pct) > 10**(-5): 
+    feedback["correct"] = False
+    feedback["message"] += "The percentage of skin cells is not correctly calculated"
+
+if feedback["correct"]:
+    feedback["message"] = "That's correct! Good job"
+
+feedback
+```
+
+```{pyodide}
+#| exercise: biological_calculation_exercise_func
 # Define a function to calculate the percentage
 def percentage(number, total):
   # This function is equivalent to the one shown above, just a little more concise. 

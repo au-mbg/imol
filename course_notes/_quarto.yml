@@ -25,7 +25,8 @@ website:
         - section: "Python Intro"
           contents:
             - python_intro/python_intro.qmd
-            - python_intro/python_data.qmd
+            - python_intro/python_data_types.qmd
+            - python_intro/python_data_example.qmd
     - id: markdown-intro-sidebar
       style: "docked"
       contents:

@@ -1,0 +1,178 @@
+---
+title: Data types
+format: 
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+---
+
+One of the most useful aspects of Python is the ability to work with complex datasets. 
+However, to do so it is useful to understand a little bit about **data types**. 
+
+## The primary data types. 
+
+We will consider three primary data types 
+
+- **Integers** (*whole numbers*): Used to represent whole numbers, for example the number of bases or codons. 
+- **Floats** (*decimal numbers*): Used to represent decimal numbers, for example a concentration in $\frac{\mathrm{ng}}{\mathrm{\mu L}}$.
+- **Strings** (*text*): Used to represent text, for example mRNA-sequences or names. 
+
+The code block below shows a variable of each of these types 
+
+```{pyodide}
+an_integer = 1
+a_float = 3.1415
+a_string = "Monkeybread"
+
+print('Integer: ', an_integer, type(an_integer))
+print('Float: ', a_float, type(a_float))
+print('a_string: ', a_string, type(a_string))
+```
+
+::: {.callout-tip}
+Here the function `type` was used to obtain the type that Python uses for each of our variables. 
+You don't need to understand the details of this - just notice that these three pieces of data were automatically understood to be one of the above types. 
+:::
+
+### Exercise: mRNA and datatypes.
+
+Consider working with an mRNA molecule with sequence `GCAUGCCGUUUGGAUGACCG`. 
+
+### Sequence data type
+
+What Python data type would it be natural to use for an mRNA sequence? 
+
+### Sequence length 
+
+What Python data type would it be natural to use for the length of an mRNA sequence? 
+
+### In Python
+
+Using the cell below, how many nucleotides are in the sequence? 
+
+```{pyodide}
+mrna = "GCAUGCCGUUUGGAUGACCG"
+sequence_length = len(mrna)
+
+print("The sequence has length:", sequence_length)
+```
+
+::: {.callout-tip}
+The `len` function is incredibly useful - here we used it to return the number of characters in a string. 
+:::
+
+### mRNA codons 
+
+Which data type would it be natural to use for the number of codons in the mRNA? 
+
+```{pyodide}
+mrna = "GCAUGCCGUUUGGAUGACCG"
+sequence_length = len(mrna)
+
+print("The sequence has length:", sequence_length)
+```
+
+## Data collections 
+
+The three primary types we saw above can describe a lot of things, however an actual dataset is 
+typically a collection of several measurements/labels/etc. Imagine for example an experiment where the absorption coefficent is measured as a function of wavelength, we could represent that 
+as 
+
+```python
+wavelength_1 = 400
+absorption_1 = 2.451
+wavelength_2 = 401
+absorption_2 = 2.532
+...
+```
+However, its pretty clear that this becomes really annoying to deal with very quickly - so we need something smarter. The simplest collection is a list
+
+```python
+wavelengths = [400, 401, ...]
+absorptions = [2.451, 2.532, ...]
+```
+
+This is not too bad, it keeps the wavelengths grouped together and similarly for the absorptions.
+However, for we can go a step further and use a `DataFrame`. 
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({'wavelengths': [400, 401], 'adsorptions': [2.451, 2.532]})
+print(df)
+```
+
+Now the full dataset is contained in one variable (here called `df`) - this makes working with a dataset much easier. 
+
+### Calculating cell sizes 
+
+The code below creates a dataset using a `DataFrame` with cell types and the upper and lower limits of their radii.
+
+```{pyodide}
+import pandas as pd
+
+cell_data = pd.DataFrame({
+    'cell_type': ["Mycoplasma", "Typical bacterium", "Yeast cell", "Red blood cell",
+    "Lymphocyte", "Typical animal cell", "Typical plant cell", "Human egg cell (oocyte)",
+    "Neuron (cell body)"], 
+'radius_lower_um': [0.2, 1, 5, 7, 8, 10, 20, 120, 10], 
+'radius_upper_um': [0.3, 2, 7, 8, 10, 20, 100, 140, 100]}).set_index('cell_type')
+
+print(cell_data)
+```
+
+We would like to calculate the volume of these cells, assuming they are spherical 
+
+$$
+V(r) = \frac{4}{3}\pi r^3
+$$
+
+#### Calculate the volume of a myocoplasma
+
+We will start by making the calculation as if Python was almost just a normal calculator. 
+
+Put in the correct lower limit of the radius and calculate the volume of the cell in the interactive cell below
+
+```{pyodide}
+#| exercise: cell_volume_1
+#| check: true
+
+feedback = {"correct": False, "message": "..."}
+pi = 3.1415
+
+if mycoplasma_radius != 0.2:
+    feedback['correct'] = False
+    feedback['message'] = "That's not the correct radius."
+elif mycoplasma_volume != 4/3 * pi * 0.2**3:
+    feedback['correct'] = False
+    feedback['message'] = "That's not the correct volume."
+else:
+    feedback['correct'] = True
+    feedback['message'] = "Thats correct!"
+
+feedback 
+```
+
+```{pyodide}
+#| exercise: cell_volume_1
+pi = 3.1415
+mycoplasma_radius = ______
+mycoplasma_volume = ______
+
+print("The volume is", mycoplasma_volume)
+```
+
+### Calculate the volume of mycoplasma - but smarter.
+
+```{pyodide}
+pi = 3.1415
+mycoplasma_radius = cell_data['mycoplasma']['radius_lower_um']
+mycoplasma_volume = ______
+
+print("The volume is", mycoplasma_volume)
+```
