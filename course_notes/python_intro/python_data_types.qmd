@@ -288,7 +288,7 @@ This works with all common arithmetic operations
 - Multiplication: `my_array * 10`
 - Division: `my_array / 10`
 
-### Example concentrations
+### Exercise: Concentration conversion
 
 In an experiment you have measured the concentration a solution in units of $\mu\mathrm{M}$ (micromolar) but you need to work with them in millimolar. Use the cell below to convert the concentrations. 
 
@@ -331,7 +331,13 @@ df = pd.DataFrame({'wavelengths': [400, 401], 'adsorptions': [2.451, 2.532]})
 print(df)
 ```
 
-Now the full dataset is contained in one variable (here called `df`) - this makes working with a dataset much easier. 
+Now the full dataset is contained in one variable (here called `df`) - this makes working with a dataset much easier. A `DataFrame` can also be indexed, for example we extract the `wavelengths` like so 
+
+```{python}
+df['wavelengths']
+```
+
+So with a `DataFrame` indexing uses the name of the row or column rather than the numeric index we've seen for lists and arrays. 
 
 ### Calculating cell sizes 
 
@@ -418,15 +424,46 @@ To do so we need to use *indexing* to extract the entry we are interested in.
 
 ```{pyodide}
 #| exercise: cell_volume_2
-
 pi = 3.1415
-mycoplasma_radius = cell_data['radius_lower_um']['Mycoplasma']
+mycoplasma_radius = cell_data['radius_lower_um'][______]
 mycoplasma_volume = ______
 
 print("The volume is", mycoplasma_volume)
 ```
 
+#### Calculate the volume of all the cells 
+
+Each column in `cell_data` is actually an array, so we can easily calculate volumes of 
+every cell at once. 
+
+```{pyodide}
+#| exercise: cell_volume_3
+#| setup: true
+
+import pandas as pd
+
+cell_data = pd.DataFrame({
+    'cell_type': ["Mycoplasma", "Typical bacterium", "Yeast cell", "Red blood cell",
+    "Lymphocyte", "Typical animal cell", "Typical plant cell", "Human egg cell (oocyte)",
+    "Neuron (cell body)"], 
+'radius_lower_um': [0.2, 1, 5, 7, 8, 10, 20, 120, 10], 
+'radius_upper_um': [0.3, 2, 7, 8, 10, 20, 100, 140, 100]}).set_index('cell_type')
+```
+
+```{pyodide}
+#| exercise: cell_volume_3
+pi = 3.1415
+cell_volumes = ______ * cell_data['radius_lower_um'] 
+
+print(cell_volumes)
+```
+
+
 ### Disorder in the lab
+
+Due to an earthquake all the labels fell off the samples in the lab, so noone knows 
+what type of cells each sample contains. What you do know is that each sample only contains 
+one cell type and that they were all from the human 
 
 Due to an unfortunate mishap it was forgotten what type of cell a certain set of measurements came from. To try figure it out you have measured the sizes of the cells .... 
 

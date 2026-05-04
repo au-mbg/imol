@@ -1,0 +1,139 @@
+---
+title: Calculations & Parentheses
+format: 
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+---
+
+In later courses you will need to work with equations such as the one shown below
+
+$$
+\theta = \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} - \sqrt{\left(\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]}\right)^2 - \frac{[L_{tot}]}{[P_{tot}]}},
+$$
+which can be used to describe titration data that reports protein saturation as a function of total ligand concentration.
+
+Calculating this function requires that we are careful with parentheses! Which we have all 
+learned, but since it is very important it is worth refreshing. 
+
+## Exercise: Mind the (...)
+
+For the following pairs of expressions, calculate both (by hand or mentally, according to preference.)
+
+
+$$
+\begin{aligned}
+2 + 3 \times 4 \quad &\mathrm{vs.} \quad (2 + 3) \times 4 \\ \\
+10 - 2^2 \quad &\mathrm{vs.} \quad (10 - 2)^2 \\ \\
+100 / 10 \times 2 \quad &\mathrm{vs.} \quad 100 / (10 \times 2) \\ \\
+\frac{12 + 8}{4} \quad &\mathrm{vs.} \quad 12 + 8 / 4
+\end{aligned}
+$$
+
+## Exercise: Beware of the (...)
+
+For each of the interactive cells below, consider what the result will be **before** you run the cell.
+
+```{pyodide}
+a = 1 + 2 * 3 ** 2
+print('a: ', a)
+```
+
+```{pyodide}
+b = (1 + 2) * 3 ** 2
+print('b: ', b)
+```
+
+```{pyodide}
+c = 1 + 2 * (3 ** 2)
+print('c: ', c)
+```
+
+## Exercise: Fix the (...)
+
+We want to calculate the 
+
+$$
+\frac{a + b}{c + d}
+$$
+
+Someone has implemented the function below to do so, but it is incorrect - your task is to fix it.
+
+```{pyodide}
+#| exercise: fix_function
+#| check: true
+
+checks = [((152, 16, 2, 2), 42), 
+        ((1, 1, 1, 1), 1)
+        ((2, 2, 1, 1), 2)
+        ]
+
+correct = True
+for params, expected_result in checks: 
+    if fraction_func(*params) != expected_result:
+        correct = False
+
+feedback = {"correct": correct}
+if correct:
+    feedback["message"] = "That's correct"
+else:
+    feedback["message"] = "Sorry, that's not quite right."
+
+feedback
+
+```
+
+
+```{pyodide}
+#| exercise: fix_function
+def fraction_func(a, b, c, d):
+    return a + b / c + d
+
+result = fraction_func(152, 16, 2, 2)
+print(result)
+```
+
+## Implement the (...)
+
+The first term of the quadratic binding equation is 
+
+$$
+\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} = \frac{a + b + c}{2 b}
+$$
+
+Complete the function below so it calculates this expression 
+
+```{pyodide}
+#| exercise: quadratic_first_term
+def first_term(a, b, c):
+    return ______
+
+result = first_term(100, 2, 66)
+print(result)
+```
+
+```{pyodide}
+#| exercise: quadratic_first_term
+#| check: true
+
+checks = [((100, 2, 66), 42), 
+        ]
+
+correct = True
+for params, expected_result in checks: 
+    if first_term(*params) != expected_result:
+        correct = False
+
+feedback = {"correct": correct}
+if correct:
+    feedback["message"] = "That's correct"
+else:
+    feedback["message"] = "Sorry, that's not quite right."
+
+feedback
+```

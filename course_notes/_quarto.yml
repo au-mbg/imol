@@ -26,6 +26,8 @@ website:
           contents:
             - python_intro/python_intro.qmd
             - python_intro/python_data_types.qmd
+            - python_intro/python_working_with_data.qmd
+            - python_intro/python_parentheses.qmd
             - python_intro/python_data_example.qmd
     - id: markdown-intro-sidebar
       style: "docked"
