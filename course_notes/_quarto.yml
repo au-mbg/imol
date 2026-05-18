@@ -21,7 +21,8 @@ website:
             - python_intro/python_parentheses.qmd
             - python_intro/python_data_types.qmd
             - python_intro/python_working_with_data.qmd
-            - python_intro/python_data_example.qmd
+            - python_intro/python_lab_exercise.qmd
+
 format:
   html:
     toc: true
