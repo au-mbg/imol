@@ -11,13 +11,6 @@ website:
       - href: python_intro/index.qmd
         text: Python Intro
         icon: code-slash
-      - href: markdown_intro/index.qmd
-        text: Markdown Intro
-        icon: markdown
-      - href: quiz_example/quiz.qmd
-        text: Quiz Example
-        icon: question
-
   sidebar: 
     - id: python-intro-sidebar
       style: "docked"
@@ -25,17 +18,10 @@ website:
         - section: "Python Intro"
           contents:
             - python_intro/python_intro.qmd
+            - python_intro/python_parentheses.qmd
             - python_intro/python_data_types.qmd
             - python_intro/python_working_with_data.qmd
-            - python_intro/python_parentheses.qmd
             - python_intro/python_data_example.qmd
-    - id: markdown-intro-sidebar
-      style: "docked"
-      contents:
-        - section: "Markdown Intro"
-          contents:
-            - markdown_intro/index.qmd
-
 format:
   html:
     toc: true
