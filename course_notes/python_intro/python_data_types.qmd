@@ -43,15 +43,15 @@ You don't need to understand the details of this - just notice that these three 
 
 Consider working with an mRNA molecule with sequence `GCAUGCCGUUUGGAUGACCG`. 
 
-### Sequence data type
+#### Sequence data type
 
 What Python data type would it be natural to use for an mRNA sequence? 
 
-### Sequence length 
+#### Sequence length 
 
 What Python data type would it be natural to use for the length of an mRNA sequence? 
 
-### In Python
+#### In Python
 
 Using the cell below, how many nucleotides are in the sequence? 
 
@@ -66,9 +66,9 @@ print("The sequence has length:", sequence_length)
 The `len` function is incredibly useful - here we used it to return the number of characters in a string. 
 :::
 
-### mRNA codons 
+#### mRNA codons 
 
-Which data type would it be natural to use for the number of codons in the mRNA? 
+Which data type would it be natural to use for the **number of codons** in the mRNA? 
 
 ```{pyodide}
 mrna = "GCAUGCCGUUUGGAUGACCG"
