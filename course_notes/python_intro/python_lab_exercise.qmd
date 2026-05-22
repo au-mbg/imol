@@ -133,16 +133,76 @@ def plot_dataframe(df):
 
 The cell below converts the absorbances to concentrations and creates a new dataframe.
 
+::: {.panel-tabset}
+
+## Interactive Cell
+
 ```{pyodide}
 df_conc = convert_absorbance(df)
 display(df_conc)
 ```
 
+## Code
+
+```python
+def lambert_beers(absorbance):
+    L = 1 # cm
+    ext_coeff = 18000 # 1 / (M cm)
+    conc = absorbance / (L * ext_coeff) # M 
+    return conc
+
+
+def convert_absorbance(df):
+    data = {
+        'time': df['time'],
+    }
+
+    for key in df.keys():
+        if key == "time":            
+            continue
+        
+        new_key = f"S_{key}_mM"
+        conc = lambert_beers(df[key])
+        data[new_key] = conc
+
+    df_conc = pd.DataFrame(data)
+
+    return df_conc
+```
+
+:::
+
 The next cell plots the concentration as a function of time for each column, corresponding to a plot for each substrate concentration.
+
+::: {.panel-tabset}
+
+## Interactive Cell
 
 ```{pyodide}
 plot_dataframe(df_conc)
 ```
+
+## Code
+
+```python
+def plot_dataframe(df):
+    fig, ax = plt.subplots()
+
+    for key in df.keys():
+        if key == "time":
+            continue
+
+        ax.plot(df['time'], df[key], '-o')
+
+    ax.set_ylabel('Concentration [M]')
+    ax.set_xlabel('Time [s]')
+
+    ax.patch.set_alpha(0.0)
+    fig.patch.set_alpha(0.0)
+    plt.show()
+```
+
+:::
 
 ::: {.callout-important title="Question"}
 What happens to the slope of the curves as substrate concentration increases? 
@@ -167,13 +227,11 @@ Where $V_0$ is the intial reaction velocity that we are looking for.
 #| echo: false
 
 def linear_function(x, a, b):
-    ## Your task: Implement the linear function
     result = a * x + b
     return result
 
 def find_slope(time_data, abs_data):
     ## This selects the times and absorbances that have been measured (not NaN)
-    ## Don't worry about this - this is just to help you with this exercise.
     indices = np.where(~abs_data.isna())[0]
     time_data = time_data[indices]
     abs_data = abs_data[indices]
@@ -201,6 +259,10 @@ def find_slopes(df_conc):
     return substrate_concentrations, slopes
 ```
 
+::: {.panel-tabset}
+
+## Interactive Cell
+
 ```{pyodide}
 # Uses fitting to the find the slope (reaction velocity) 
 # for each substrate concentration
@@ -213,6 +275,44 @@ ax.set_xlabel('Substrate concentration [M]')
 ax.set_ylabel('Slope [M/s]')
 plt.show()
 ```
+
+## Code
+
+```python
+def linear_function(x, a, b):
+    result = a * x + b
+    return result
+
+def find_slope(time_data, abs_data):
+    ## This selects the times and absorbances that have been measured (not NaN)
+    indices = np.where(~abs_data.isna())[0]
+    time_data = time_data[indices]
+    abs_data = abs_data[indices]
+
+    ## Find the slope and the intercept using curve_fit and return the slope
+    fitted_parameters, trash = curve_fit(linear_function, time_data, abs_data)
+    slope = fitted_parameters[0]
+    return slope
+
+def find_slopes(df_conc):
+    slopes = []
+    substrate_concentrations = []
+
+    for key in df_conc.keys():
+        if key == "time":
+            continue
+
+        slope = find_slope(df_conc['time'], df_conc[key])
+        conc = float(key.split('_')[1]) * 10**(-3)
+        slopes.append(slope)
+        substrate_concentrations.append(conc)
+
+    substrate_concentrations = np.array(substrate_concentrations)
+    slopes = np.array(slopes)
+    return substrate_concentrations, slopes
+```
+
+:::
 
 ### Michaelis-Menten
 
@@ -228,20 +328,13 @@ where $V_0$ is the initial reaction velocity, $V_{max}$ is maximum reaction velo
 #| echo: false
 
 def michaelis_menten(S, K_M, V_max):
-    ## Your task: Implement the Michaelis-Menten model.
     result = (V_max * S) / (K_M + S)
     return result
 
 def fit_michealis_menten(substrate_conc, slopes):
-
-    ## Your task: Estimate K_M and V_max from the plot.
     K_M_estimate = 0.00001
     V_max_estimate = 8 * 10**(-8)
-
-    ## This is your estimates as the initial guess.
     initial_guess = [K_M_estimate, V_max_estimate]
-
-    ## Your task: Make a fit to the Michaelis-Menten equation & extract K_M and V_max.
     fitted_parameters, trash = curve_fit(michaelis_menten, substrate_conc, slopes, initial_guess)
     K_M_fit, V_max_fit = fitted_parameters
 
@@ -253,7 +346,6 @@ def plot_michealis_menten(km, vmax, substrate, slopes):
     S_smooth = np.linspace(substrate.min(), substrate.max())
     V0_fit = michaelis_menten(S_smooth, km, vmax)
 
-    ## Your task: Plot the data and the fit
     ax.plot(substrate, slopes, 'o', label='Data')
     ax.plot(S_smooth, V0_fit, label='Fit')
 
@@ -267,11 +359,52 @@ def plot_michealis_menten(km, vmax, substrate, slopes):
     plt.show()
 ```
 
+::: {.panel-tabset}
+
+## Interactive Cell
+
 ```{pyodide}
 K_M, V_max = fit_michealis_menten(substrate_conc, slopes)
 
 plot_michealis_menten(K_M, V_max, substrate_conc, slopes)
 ```
+
+## Code
+
+```python
+def michaelis_menten(S, K_M, V_max):
+    result = (V_max * S) / (K_M + S)
+    return result
+
+def fit_michealis_menten(substrate_conc, slopes):
+    K_M_estimate = 0.00001
+    V_max_estimate = 8 * 10**(-8)
+    initial_guess = [K_M_estimate, V_max_estimate]
+    fitted_parameters, trash = curve_fit(michaelis_menten, substrate_conc, slopes, initial_guess)
+    K_M_fit, V_max_fit = fitted_parameters
+
+    return K_M_fit, V_max_fit
+
+def plot_michealis_menten(km, vmax, substrate, slopes):
+    fig, ax = plt.subplots() 
+
+    S_smooth = np.linspace(substrate.min(), substrate.max())
+    V0_fit = michaelis_menten(S_smooth, km, vmax)
+
+    ax.plot(substrate, slopes, 'o', label='Data')
+    ax.plot(S_smooth, V0_fit, label='Fit')
+
+    ## These add x and y axis labels.
+    ax.set_xlabel('Substrate concentration (M)')
+    ax.set_ylabel('$V_0$ (M/s)')
+
+    ax.text(0.7, 0.5, f'$K_M=${km:0.4} M', transform=ax.transAxes, ha='right', va='center', fontsize=14)
+    ax.text(0.7, 0.4, f'$V_{{max}}=${vmax:0.4} M/s', transform=ax.transAxes, ha='right', va='center', fontsize=14)
+
+    plt.show()
+```
+
+:::
 
 ::: {.callout-important title="Question"}
 What is an explanantion of this behaviour based on enzymekinetics? 
