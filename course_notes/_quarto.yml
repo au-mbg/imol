@@ -28,7 +28,6 @@ format:
     toc: true
     number-sections: true
     css: styling/styles.css
-    include-after-body: styling/markdown-playground.html
     theme:
       light: cosmo
       dark: [darkly, styling/theme-dark.scss]
