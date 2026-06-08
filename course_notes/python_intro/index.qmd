@@ -1,6 +1,6 @@
 ---
-title: Introduction to Python
+title: iMoL TØ. Introduction to Python
 sidebar: python-intro-sidebar
 ---
 
-These notes serve as an introduction to Python programming. 
+These exercises and notes will get you started with Python on iMoL. 

@@ -1,5 +1,5 @@
 ---
-title: Getting started
+title: TØ 1. Getting started
 format: 
   live-html:
     toc: true
@@ -76,343 +76,47 @@ feedback
 ______
 ```
 
-## Variables 
+## Calculations & Parentheses
 
-To really unlock the utility of Python variables are required, among other things 
-they allow us to express calculations in a simpler way. A variable is defined by using `=`, for example, we can define 
-
-```python
-a = 21 + 21
-```
-This means that the result of the calculation is stored in the variable `a` and 
-can be used in subsequent calculations. 
-
-### Exercise: Calculations with variables
-
-Repeat the calculations
-
-1. $21 + 21$
-2. $53 - 11$
-3. $6 \times 7$
-4. $\frac{546}{13}$
-
-But now assign each of them to a variable `a`, `b` `c` etc and then calculate 
+In later courses you will need to work with equations such as the one shown below
 
 $$
-(21 + 21) + (53 - 11) + (6 \times 7) + \frac{546}{13}
+\theta = \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} - \sqrt{\left(\frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]}\right)^2 - \frac{[L_{tot}]}{[P_{tot}]}},
 $$
-using these variables. In the cell below replace `______` with your code
+which can be used to describe titration data that reports protein saturation as a function of total ligand concentration.
 
-```{pyodide}
-#| exercise: variable_exercise
-#| check: true
-if a + b + c + d + f == 42 * 8:
-  feedback = { "correct": True, "message": "That's correct. Nice work!" }
-else:
-  feedback = { "correct": False, "message": "That's incorrect, try again." }
-feedback
-```
+Calculating this function requires that we are careful with parentheses! Which we have all 
+learned, but since it is very important it is worth refreshing. 
 
-```{pyodide}
-#| exercise: variable_exercise
-a = ______
-b = ______
-c = ______
-d = ______
-f = ______ # Do not use any numbers on this line.
+### Exercise: Mind the (...)
 
-print(a, b, c, d, f)
-```
+For the following pairs of expressions, calculate both (by hand or mentally, according to preference.)
 
-::: {.callout-note}
-The cell above used a new thing `print`. This is a *function*, functions are like recipe - they 
-take a number of inputs (ingredients) and perform some predefined set of operations on those 
-and return an output. 
-
-The `print`-function prints what it is given to the screen - in this case the five variables. 
-You will and use the `print`-function numerous times. 
-::: 
-
-### Exercise: A biological calculation
-
-The number of cells in different parts of the body is given below 
-
-| Type | Number of cells | 
-| ---- | --------------- |
-| Total cells | $37 \cdot 10^{12}$ | 
-| Brain cells | $86 \cdot 10^{9}$  | 
-| Liver cells | $240 \cdot 10^9$   | 
-| Skin cells  | $16 \cdot 10^{11}$| 
-
-For each cell type, calculate the percentage each category represents of the total number of cells in the body, i.e., for each category calculate 
 
 $$
-P = \frac{\mathrm{Number}}{\mathrm{Total}} \times 100.
+\begin{aligned}
+2 + 3 \times 4 \quad &\mathrm{vs.} \quad (2 + 3) \times 4 \\ \\
+10 - 2^2 \quad &\mathrm{vs.} \quad (10 - 2)^2 \\ \\
+100 / 10 \times 2 \quad &\mathrm{vs.} \quad 100 / (10 \times 2) \\ \\
+\frac{12 + 8}{4} \quad &\mathrm{vs.} \quad 12 + 8 / 4
+\end{aligned}
 $$
 
+### Exercise: Beware of the (...)
+
+For each of the interactive cells below, consider what the result will be **before** you run the cell.
+
 ```{pyodide}
-#| exercise: biological_calculation_exercise
-#| check: true
-correct_total_cells = 37_000_000_000_000
-correct_brain_cells = 86_000_000_000
-correct_liver_cells = 240_000_000_000
-correct_skin_cells = 1_600_000_000_000
-
-correct_brain_pct = brain_cells / total_cells * 100
-correct_liver_pct = liver_cells / total_cells * 100
-correct_skin_pct = skin_cells / total_cells * 100
-
-feedback = {"correct": True, "message": "Sorry... "}
-
-if correct_total_cells != total_cells:
-    feedback["correct"] = False
-    feedback["message"] += "The number of total cells is incorrect\n"
-if correct_brain_cells != brain_cells: 
-    feedback["correct"] = False
-    feedback["message"] += "The number of brain cells is incorrect\n"
-if correct_liver_cells != liver_cells:
-    feedback["correct"] = False
-    feedback["message"] += "The number of liver cells is incorrect\n"
-if correct_skin_cells != skin_cells:
-    feedback["correct"] = False
-    feedback["message"] += "The number of skin cells is incorrect\n"
-
-if abs(correct_brain_pct - brain_pct) > 10**(-5): 
-    feedback["correct"] = False
-    feedback["message"] += "The percentage of brain cells is not correctly calculated"
-if abs(correct_liver_pct - liver_pct) > 10**(-5): 
-    feedback["correct"] = False
-    feedback["message"] += "The percentage of liver cells is not correctly calculated"
-if abs(correct_skin_pct - skin_pct) > 10**(-5): 
-    feedback["correct"] = False
-    feedback["message"] += "The percentage of skin cells is not correctly calculated"
-
-if feedback["correct"]:
-    feedback["message"] = "That's correct! Good job"
-
-feedback
+a = 1 + 2 * 3 ** 2
+print('a: ', a)
 ```
 
 ```{pyodide}
-#| exercise: biological_calculation_exercise
-# Make variables for the different number of cells
-total_cells = ______
-brain_cells = ______
-liver_cells = ______
-skin_cells = ______
-
-# Calculate the percentages - use the variables!
-brain_pct = ______
-liver_pct = ______
-skin_pct = ______
-
-# Print the results
-print("Brain cell percentage: ", brain_pct)
-print("Liver cell percentage: ", liver_pct)
-print("Skin cell percentage: ", skin_pct)
-```
-
-::: callout-tip
-The numbers of cells are rather large, so typing the correct amount of zeros is a 
-little painful. The code below shows four different ways of writing the same number in 
-Python code
-
-```python
-13000000000000     # Basic
-13_000_000_000_000 # Underscores to visually distinguish
-13 * 10**(12)      # Using exponentation 
-13E12              # Scientific notation
-```
-:::
-
-## Functions 
-
-When doing repeated calculations it is generally good practice to define a function. Consider 
-for example that you need to calculate the average of several sets of numbers, without using 
-functions we could write 
-
-```python
-A = 1
-B = 2
-C = 3
-D = 4
-
-average_AB = (A + B) / 2
-average_BC = (B + C) / 2
-average_CD = (C + D) / 2
-```
-
-This is perfectly valid, but it is more prone to error - as we have to write the expression 
-multiple times - and it is harder for someone else to decipher - as they have to check they understand 
-what each line of code does. If we instead used a function 
-
-```python
-A = 1
-B = 2
-C = 3
-D = 4
-
-def average(x, y):
-  return (x + y) / 2
-
-average_AB = average(A, B)
-average_BC = average(B, C)
-average_CD = average(D, C)
-```
-
-Now all the logic of calculating the average is contained in the `average` function so we only have one place to check for errors.
-
-::: {.callout-note title="A note on functions"}
-
-Functions use specific syntax, meaning they have to be written following a set of rules
-
-```python
-def percentage(number, total): # <1>
-  intermediate_calculation = number / total # <2>
-  final_result = intermediate_calculation * 100
-  return final_result # <3>
-```
-
-1. The function is defined with `def` and its name (here `percentage`) and its inputs `(number, total)`.
-2. The body of the function is indented by 4 spaces (or 1 tab). The body can consist of as many lines as needed.
-3. `return` exits the function and returns the variable that follows - here `final_result`. If a function doesn't have a `return` or just has `return` without any variables it implicitly returns `None`.
-
-Using a function requires "calling" it, this means giving it the inputs it expects - like below
-
-```python
-result = percentage(1, 2)
-```
-
-This code will calculate the function with `number=1` and `total=2` and assign the returned value to `result`. Outside the function the variables `intermediate_calculation` and `final_result` are not available (we would say they are out of scope). There's also nothing special about the names, they are just variables like anywhere else, they could just aswell have been called `nemo_the_fish` or `min_endelige_beregning_af_gennemsnittet_foretaget_mandag_den_13_april` but its a good idea to give variables descriptive but short names. 
-
-Only what was returned by the function is available outside the function and if it needs to used later on in the code it needs to be saved to its own variable, so we can think of the code above like
-
-1. `percentage(1, 2)` calculates and returns `final_result`. 
-2. Whatever is returned is assigned to the variable `result`.
-
-:::
-
-### Exercise: Functions, calling, assignment and scopes
-
-```{pyodide}
-#| autorun: true
-#| echo: true
-# A function that calculates something but doesn't return it
-def function_without_return(A, B):
-  result = A * B 
-  print("Inside function_without_return: ", result)
-
-# A function that calculates something and returns it.
-def function_with_return(A, B):
-  result = A * B
-  print("Inside function_with_return: ", result)
-  return result
-```
-
-The code block above defines two functions.
-
-Use the interactive codeblock below to answer these questions. Below there are 
-three code blocks that use these functions and an accompanying question. 
-
-You are not expected to give technically precise answers, just describe it in your own words.
-For each question you can play around with the interactive or the definition of the functions above to help you answer.
-
-#### Without assignment
-
-What happens when the functions are called but the output not assigned?
-
-```{pyodide}
-# Call the functions but don't assign to a variable
-print('Calling functions without assigning to a variable')
-function_without_return(6, 7)
-function_with_return(6, 7)
-
-print('End of cell')
-```
-
-#### With assignment
-
-What happens when the functions are called and the output is assigned?
-
-```{pyodide}
-print('Calling functions and assigning')
-without_return = function_without_return(6, 7)
-with_return = function_with_return(6, 7)
-
-print('without_return: ', without_return)
-print('with_return: ', with_return)
-print('End of cell')
-```
-
-#### Without calling
-
-What happens when you assign the function itself to a variable without calling it? 
-
-```{pyodide}
-print('Assigning to a variable but not actually calling')
-without_return_no_call = function_without_return
-with_return_no_call = function_with_return
-
-print('without_return_no_call: ', without_return_no_call)
-print('with_return_no_call: ', with_return_no_call)
-print('End of cell')
-```
-
-
-### Exercise: A biological calculation with a function.
-
-Repeat the calculation of cell percentages but now using the `percentage` function defined below
-
-```{pyodide}
-#| exercise: biological_calculation_exercise_func
-#| check: true
-correct_total_cells = 37_000_000_000_000
-correct_brain_cells = 86_000_000_000
-correct_liver_cells = 240_000_000_000
-correct_skin_cells = 1_600_000_000_000
-
-correct_brain_pct = brain_cells / total_cells * 100
-correct_liver_pct = liver_cells / total_cells * 100
-correct_skin_pct = skin_cells / total_cells * 100
-
-feedback = {"correct": True, "message": "Sorry... "}
-
-if abs(correct_brain_pct - brain_pct) > 10**(-5): 
-    feedback["correct"] = False
-    feedback["message"] += "The percentage of brain cells is not correctly calculated"
-if abs(correct_liver_pct - liver_pct) > 10**(-5): 
-    feedback["correct"] = False
-    feedback["message"] += "The percentage of liver cells is not correctly calculated"
-if abs(correct_skin_pct - skin_pct) > 10**(-5): 
-    feedback["correct"] = False
-    feedback["message"] += "The percentage of skin cells is not correctly calculated"
-
-if feedback["correct"]:
-    feedback["message"] = "That's correct! Good job"
-
-feedback
+b = (1 + 2) * 3 ** 2
+print('b: ', b)
 ```
 
 ```{pyodide}
-#| exercise: biological_calculation_exercise_func
-# Define a function to calculate the percentage
-def percentage(number, total):
-  # This function is equivalent to the one shown above, just a little more concise. 
-  return number / total * 100
-
-# Make variables for the different number of cells
-total_cells = 37_000_000_000_000
-brain_cells = 86_000_000_000
-liver_cells = 240_000_000_000
-skin_cells = 1_600_000_000_000
-
-# Calculate the percentages - use the variables!
-brain_pct = ______
-liver_pct = ______
-skin_pct = ______
-
-# Print the results
-print("Brain cell percentage: ", brain_pct)
-print("Liver cell percentage: ", liver_pct)
-print("Skin cell percentage: ", skin_pct)
+c = 1 + 2 * (3 ** 2)
+print('c: ', c)
 ```

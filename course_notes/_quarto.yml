@@ -5,20 +5,17 @@ website:
   title: "Introduktion til Livets Molekyler"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-        icon: house
       - href: python_intro/index.qmd
-        text: Python Intro
-        icon: code-slash
+        text: iMoL TØ
+        icon: house
   sidebar: 
     - id: python-intro-sidebar
       style: "docked"
       contents:
-        - section: "Python Intro"
+        - section: "iMoL TØ"
           contents:
             - python_intro/python_intro.qmd
-            - python_intro/python_parentheses.qmd
+            - python_intro/python_variables_functions.qmd
             - python_intro/python_data_types.qmd
             - python_intro/python_working_with_data.qmd
             - python_intro/python_lab_exercise.qmd
