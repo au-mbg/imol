@@ -1,0 +1,19 @@
+---
+title: TØ 4. Laboratory Exercise 1
+format: 
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+
+pyodide:
+  packages:
+    - pandas
+    - openpyxl
+---
+
+## Exercise: Analysis of LØ data from LØ 1.  
