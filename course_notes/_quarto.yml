@@ -16,9 +16,10 @@ website:
           contents:
             - python_intro/python_intro.qmd
             - python_intro/python_variables_functions.qmd
+            - python_intro/python_lab_exercise_1.qmd
             - python_intro/python_data_types.qmd
             - python_intro/python_working_with_data.qmd
-            - python_intro/python_lab_exercise.qmd
+            - python_intro/python_lab_exercise_2.qmd
 
 format:
   html:
