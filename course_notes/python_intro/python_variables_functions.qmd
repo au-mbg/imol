@@ -65,7 +65,7 @@ take a number of inputs (ingredients) and perform some predefined set of operati
 and return an output. 
 
 The `print`-function prints what it is given to the screen - in this case the five variables. 
-You will and use the `print`-function numerous times. 
+You will see and use the `print`-function numerous times. 
 ::: 
 
 ### Exercise: A biological calculation
@@ -227,72 +227,6 @@ Only what was returned by the function is available outside the function and if 
 
 :::
 
-### Exercise: Functions, calling, assignment and scopes
-
-```{pyodide}
-#| autorun: true
-#| echo: true
-# A function that calculates something but doesn't return it
-def function_without_return(A, B):
-  result = A * B 
-  print("Inside function_without_return: ", result)
-
-# A function that calculates something and returns it.
-def function_with_return(A, B):
-  result = A * B
-  print("Inside function_with_return: ", result)
-  return result
-```
-
-The code block above defines two functions.
-
-Use the interactive codeblock below to answer these questions. Below there are 
-three code blocks that use these functions and an accompanying question. 
-
-You are not expected to give technically precise answers, just describe it in your own words.
-For each question you can play around with the interactive or the definition of the functions above to help you answer.
-
-#### Without assignment
-
-What happens when the functions are called but the output not assigned?
-
-```{pyodide}
-# Call the functions but don't assign to a variable
-print('Calling functions without assigning to a variable')
-function_without_return(6, 7)
-function_with_return(6, 7)
-
-print('End of cell')
-```
-
-#### With assignment
-
-What happens when the functions are called and the output is assigned?
-
-```{pyodide}
-print('Calling functions and assigning')
-without_return = function_without_return(6, 7)
-with_return = function_with_return(6, 7)
-
-print('without_return: ', without_return)
-print('with_return: ', with_return)
-print('End of cell')
-```
-
-#### Without calling
-
-What happens when you assign the function itself to a variable without calling it? 
-
-```{pyodide}
-print('Assigning to a variable but not actually calling')
-without_return_no_call = function_without_return
-with_return_no_call = function_with_return
-
-print('without_return_no_call: ', without_return_no_call)
-print('with_return_no_call: ', with_return_no_call)
-print('End of cell')
-```
-
 
 ### Exercise: A biological calculation with a function.
 
@@ -352,10 +286,11 @@ print("Liver cell percentage: ", liver_pct)
 print("Skin cell percentage: ", skin_pct)
 ```
 
+---
 
-## Exercise: Fix the (...)
+### Exercise: Fix the (...)
 
-We want to calculate the 
+We want to calculate
 
 $$
 \frac{a + b}{c + d}
@@ -397,9 +332,9 @@ result = fraction_func(152, 16, 2, 2)
 print(result)
 ```
 
-## Implement the (...)
+### Implement the (...)
 
-The first term of the quadratic binding equation is 
+The first term of the quadratic binding equation[^1] is 
 
 $$
 \frac{K_D + [P_{tot}] + [L_{tot}]}{2[P_{tot}]} = \frac{a + b + c}{2 b}
@@ -436,3 +371,5 @@ else:
 
 feedback
 ```
+
+[^1]: An equation that is central to enzyme kinetics, which you will learn more about in later courses. 

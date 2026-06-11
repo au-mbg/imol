@@ -2,3 +2,7 @@
 $navbar-bg: #1e1e1e;
 $navbar-fg: #ffffff;
 $navbar-hl: #ffffff; // optional: link hover/highlight
+
+/* Inline code (global defaults for both modes) */
+$code-color: var(--bs-body-color);
+$code-bg: rgba(var(--bs-secondary-bg-rgb), .25);

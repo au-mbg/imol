@@ -15,6 +15,10 @@ cwd = "course_notes"
 cmd = "quarto preview"
 cwd = "course_notes"
 
+[tasks.clean]
+cmd = "rm -rf python_intro/*.quarto_ipynb"
+cwd = "course_notes"
+
 [dependencies]
 python = ">=3.14.4,<3.15"
 quarto = ">=1.8.27,<2"

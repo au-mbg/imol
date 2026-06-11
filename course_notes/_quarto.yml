@@ -1,5 +1,7 @@
 project:
   type: website
+  output-dir: _site
+  
 
 website:
   title: "Introduktion til Livets Molekyler"
@@ -14,12 +16,30 @@ website:
       contents:
         - section: "iMoL TØ"
           contents:
-            - python_intro/python_intro.qmd
-            - python_intro/python_variables_functions.qmd
-            - python_intro/python_lab_exercise_1.qmd
-            - python_intro/python_data_types.qmd
-            - python_intro/python_working_with_data.qmd
-            - python_intro/python_lab_exercise_2.qmd
+            - href: python_intro/python_intro.qmd
+              icon: code-slash
+
+            - section: "TØ 3. Variables & Functions"
+              href: python_intro/python_variables_functions.qmd
+              icon: code-slash
+
+              contents:
+                  - python_intro/python_variables_functions_extra.qmd
+
+            - href: python_intro/python_lab_exercise_1.qmd
+              icon: flask
+
+            - section: "TØ 5: Data types"
+              icon: code-slash
+              href: python_intro/python_data_types.qmd
+              contents:
+                  - python_intro/python_data_types_extra.qmd
+
+            - href: python_intro/python_working_with_data.qmd
+              icon: code-slash
+
+            - href: python_intro/python_lab_exercise_2.qmd
+              icon: flask
 
 format:
   html:

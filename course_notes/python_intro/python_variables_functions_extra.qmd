@@ -1,0 +1,78 @@
+---
+title: Extra
+format: 
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+---
+
+### Exercise: Functions, calling, assignment and scopes
+
+```{pyodide}
+#| autorun: true
+# A function that calculates something but doesn't return it
+def function_without_return(A, B):
+  result = A * B 
+  print("Inside function_without_return: ", result)
+
+# A function that calculates something and returns it.
+def function_with_return(A, B):
+  result = A * B
+  print("Inside function_with_return: ", result)
+  return result
+```
+
+The code block above defines two functions.
+
+Use the interactive codeblock below to answer these questions. Below there are 
+three code blocks that use these functions and an accompanying question. 
+
+You are not expected to give technically precise answers, just describe it in your own words.
+For each question you can play around with the interactive or the definition of the functions above to help you answer.
+
+#### Without assignment
+
+What happens when the functions are called but the output not assigned?
+
+```{pyodide}
+# Call the functions but don't assign to a variable
+print('Calling functions without assigning to a variable')
+function_without_return(6, 7)
+function_with_return(6, 7)
+
+print('End of cell')
+```
+
+#### With assignment
+
+What happens when the functions are called and the output is assigned?
+
+```{pyodide}
+print('Calling functions and assigning')
+without_return = function_without_return(6, 7)
+with_return = function_with_return(6, 7)
+
+print('without_return: ', without_return)
+print('with_return: ', with_return)
+print('End of cell')
+```
+
+#### Without calling
+
+What happens when you assign the function itself to a variable without calling it? 
+
+```{pyodide}
+print('Assigning to a variable but not actually calling')
+without_return_no_call = function_without_return
+with_return_no_call = function_with_return
+
+print('without_return_no_call: ', without_return_no_call)
+print('with_return_no_call: ', with_return_no_call)
+print('End of cell')
+```
+
