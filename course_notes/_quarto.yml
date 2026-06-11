@@ -5,6 +5,7 @@ project:
 
 website:
   title: "Introduktion til Livets Molekyler"
+  favicon: styling/favicon_io/favicon.ico
   navbar:
     left:
       - href: python_intro/index.qmd
@@ -22,12 +23,14 @@ website:
             - section: "TØ 3. Variables & Functions"
               href: python_intro/python_variables_functions.qmd
               icon: code-slash
-
               contents:
                   - python_intro/python_variables_functions_extra.qmd
 
-            - href: python_intro/python_lab_exercise_1.qmd
+            - section: "TØ 4: Laboratory Exercise 1"
+              href: python_intro/python_lab_exercise_1.qmd
               icon: flask
+              contents:
+                  - python_intro/python_lab_exercise_1_extra.qmd
 
             - section: "TØ 5: Data types"
               icon: code-slash

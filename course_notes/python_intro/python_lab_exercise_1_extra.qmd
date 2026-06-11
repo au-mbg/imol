@@ -1,0 +1,70 @@
+---
+title: TØ 4. Extra
+format: 
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+---
+
+## Mean and standard deviation {#mean-std}
+
+### Exercise: General mean function
+
+A more general equation for the mean is 
+
+$$
+m(X) = \frac{1}{|X|} \sum_{x \in X} x
+$$
+
+Where $X$ is a set of numbers, $|X|$ is the size of the set i.e. the amount of numbers.
+The function we implemented before would only take the average of three numbers, while that is useful it would be better to have a more general function.
+
+To build this function we will need a few changes
+
+1. We need the input to the function to be an arbitrary number of numbers. 
+2. We need to sum over all the input numbers.
+3. We need to divide by the number of inputs numbers. 
+
+Luckily, all of this is very achievable in Python. 
+
+1. We will use a list of numbers `[1, 2, 3, 4, ...]` as input.
+2. We will use the `sum`-function to calculate the sum
+3. We will use the `len`-function to find the length of the input list. 
+
+Finish the code in the cell below 
+
+```{pyodide}
+#| exercise: general_mean_func
+def mean_func(numbers):
+  sum_total = ______ # Use `sum`
+  amount = ______ # Use `len`
+  mean = ______ # Divide sum_total by amount
+  return mean
+
+test_input = [1, 2, 3, 4, 5]
+print(mean_func(test_input))
+```
+
+```{pyodide}
+#| exercise: general_mean_func
+#| check: true
+
+cases = [[1, 2, 3], [3, 3, 3], [1, 2, 3, 4], [i for i in range(100)]]
+
+correct = True
+for case in cases:
+  correct *= mean_func(case) == sum(case) / len(case)
+
+if correct:
+  feedback = { "correct": True, "message": "That's correct. Nice work!" }
+else:
+  feedback = { "correct": False, "message": "That's incorrect, try again." }
+feedback
+```
+
+
