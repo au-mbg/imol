@@ -1,14 +1,5 @@
 ---
 title: TØ 5. Data types
-format: 
-  live-html:
-    toc: true
-    number-sections: true
-    css: ../styling/styles.css
-    theme:
-      light: cosmo
-      dark: [darkly, ../styling/theme-dark.scss]
-    respect-user-color-scheme: true
 ---
 
 One of the most useful aspects of Python is the ability to work with complex datasets. 

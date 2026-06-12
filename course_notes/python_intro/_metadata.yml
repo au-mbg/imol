@@ -1,0 +1,30 @@
+format:
+  live-html:
+    toc: true
+    number-sections: true
+    css: ../styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, ../styling/theme-dark.scss]
+    respect-user-color-scheme: true
+
+  typst:
+    number-sections: true
+    number-depth: 2
+    toc: true
+    toc-depth: 2
+    margin:
+      left: 2cm
+      right: 2cm
+      top: 2.5cm
+      bottom: 2.5cm
+  docx: default
+
+format-links:
+  - html
+  - format: typst
+    text: PDF
+    icon: file-pdf
+  - format: docx
+    text: Word
+    icon: file-word

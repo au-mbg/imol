@@ -1,15 +1,5 @@
 ---
 title: TØ 7. Working with data
-format: 
-  live-html:
-    toc: true
-    number-sections: true
-    css: ../styling/styles.css
-    theme:
-      light: cosmo
-      dark: [darkly, ../styling/theme-dark.scss]
-    respect-user-color-scheme: true
-
 pyodide:
   packages:
     - pandas

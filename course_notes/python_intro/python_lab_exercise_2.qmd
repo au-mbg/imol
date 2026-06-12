@@ -1,15 +1,5 @@
 ---
 title: TØ 9. Laboratory Exercise 2
-format: 
-  live-html:
-    toc: true
-    number-sections: true
-    css: ../styling/styles.css
-    theme:
-      light: cosmo
-      dark: [darkly, ../styling/theme-dark.scss]
-    respect-user-color-scheme: true
-
 pyodide:
   packages:
     - pandas
