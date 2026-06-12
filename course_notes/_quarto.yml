@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: _site
+  
+
+website:
+  title: "Introduktion til Livets Molekyler"
+  favicon: styling/favicon_io/favicon.ico
+  navbar:
+    left:
+      - href: python_intro/index.qmd
+        text: iMoL TØ
+        icon: house
+  sidebar: 
+    - id: python-intro-sidebar
+      style: "docked"
+      contents:
+        - section: "iMoL TØ"
+          contents:
+            - href: python_intro/python_intro.qmd
+              icon: code-slash
+
+            - section: "TØ 3. Variables & Functions"
+              href: python_intro/python_variables_functions.qmd
+              icon: code-slash
+              contents:
+                  - python_intro/python_variables_functions_extra.qmd
+
+            - section: "TØ 4: Laboratory Exercise 1"
+              href: python_intro/python_lab_exercise_1.qmd
+              icon: flask
+              contents:
+                  - python_intro/python_lab_exercise_1_extra.qmd
+
+            - section: "TØ 5: Data types"
+              icon: code-slash
+              href: python_intro/python_data_types.qmd
+              contents:
+                  - python_intro/python_data_types_extra.qmd
+
+            - href: python_intro/python_working_with_data.qmd
+              icon: code-slash
+
+            - href: python_intro/python_lab_exercise_2.qmd
+              icon: flask
+
+format:
+  html:
+    toc: true
+    number-sections: true
+    css: styling/styles.css
+    theme:
+      light: cosmo
+      dark: [darkly, styling/theme-dark.scss]
+    respect-user-color-scheme: true
