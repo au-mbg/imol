@@ -9,6 +9,11 @@ format:
     respect-user-color-scheme: true
 
   typst:
+    shift-heading-level-by: -1
+    pandoc:
+      filters:
+        - path: ../filters/static-pyodide.lua
+          at: pre-ast
     number-sections: true
     number-depth: 2
     toc: true
@@ -18,7 +23,11 @@ format:
       right: 2cm
       top: 2.5cm
       bottom: 2.5cm
-  docx: default
+  docx:
+    pandoc:
+      filters:
+        - path: ../filters/static-pyodide.lua
+          at: pre-ast
 
 format-links:
   - html

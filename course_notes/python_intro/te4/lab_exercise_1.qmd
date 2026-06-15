@@ -105,7 +105,7 @@ feedback
 ```
 
 If you want to try writing a more general function for calculating the mean see 
-the [extra exercises](python_lab_exercise_1_extra.qmd#mean-and-standard-deviation).
+the [extra exercises](extra.qmd#mean-and-standard-deviation).
 
 ### Exercise: Analyzing the standard deviation
 
@@ -161,7 +161,7 @@ else:
     display(df)
 ```
 
-This loads the data as a `pd.DataFrame` which will be [touched on later](python_data_types_extra.qmd) and used extensively in other courses.
+This loads the data as a `pd.DataFrame` which will be [touched on later](../te5/extra.qmd) and used extensively in other courses.
 
 The next cell calculates the mean and the standard deviation across the replicates
 

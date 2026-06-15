@@ -5,6 +5,9 @@ name = "imol"
 platforms = ["osx-arm64", "linux-64", "osx-64", "win-64"]
 version = "0.1.0"
 
+[activation]
+env = { TYPST_FONT_PATHS = "$PIXI_PROJECT_ROOT/course_notes/styling/fonts" }
+
 [tasks]
 
 [tasks.render]

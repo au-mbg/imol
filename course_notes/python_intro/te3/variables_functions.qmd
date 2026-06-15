@@ -2,6 +2,9 @@
 title: TØ 3. Variables & Functions
 ---
 
+In this session we will explore variables and functions - both of which are important 
+elements of Python (and many other programming languages)
+
 ## Variables 
 
 To really unlock the utility of Python variables are required, among other things 
