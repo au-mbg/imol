@@ -1,6 +1,0 @@
----
-title: iMoL TØ. Introduction to Python
-sidebar: python-intro-sidebar
----
-
-These exercises and notes will get you started with Python on iMoL. 

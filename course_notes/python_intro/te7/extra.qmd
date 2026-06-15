@@ -1,56 +1,16 @@
 ---
-title: TØ 7. Working with data
+title: TØ 7. Extra
 pyodide:
   packages:
     - pandas
     - openpyxl
 ---
 
-In this note we will explore some common operations when working with datasets. 
-We will be using the dataset presented in this [paper](https://www.sciencedirect.com/science/article/pii/S2352340919302264?utm_source=chatgpt.com) on "the absorption characteristics of extracted phytoplankton pigments".
-
 ```{python}
 import pandas as pd
-
-pigments = pd.read_csv('../datasets/curated_abs_dataset.csv')
+pigments = pd.read_csv('../../datasets/curated_abs_dataset.csv')
 display(pigments)
 ```
-
-## Plotting 
-
-One of the best ways to explore a dataset is to plot it, below one column of the dataset is 
-plotted
-
-```{python}
-#| fig-align: center
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots()
-
-# Plotting
-ax.plot(pigments['wavelength_nm'], 
-      pigments['chlorophyll-a'], 
-      label='Chlorophyll-a') # <1>
-
-# These are settings to make the plot look nice
-ax.set_xlabel('Wavelength [nm]') # <2>
-ax.set_ylabel('Adsorption')
-
-ax.legend() # <3> 
-
-# This tell Python to display the plot.
-plt.show() # <4>
-```
-1. Here we plot by picking the x-axis as the wavelength from the dataset and the y-axis as measurements of chlorophyll-a
-2. Setting the x-axis name. 
-3. Show the label in a little box, helps if we plot multiple curves in the same figure.
-4. Show the plot.
-
-### Exercise: Plotting
-
-Use the cell below to plot some of the other columns of the dataset.
-
-Try to plot several columns at the same time.
 
 ```{pyodide}
 #| echo: false
@@ -62,18 +22,6 @@ url = 'https://raw.githubusercontent.com/au-mbg/imol/refs/heads/main/course_note
 
 pigments = pd.read_csv(url)
 ```
-
-```{pyodide}
-fig, ax = plt.subplots()
-
-# Your code for plotting here
-
-plt.show()
-```
-
-### Exercise: Interpreting plots
-
-Chlorophyll a is the main photosynthetic pigment, while chlorophyll b is an accessory pigment found in green algae and land plants. Use the plotted spectra to explain why having both pigments could be useful. 
 
 ## Data manipulations
 

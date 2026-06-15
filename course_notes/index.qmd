@@ -1,4 +1,15 @@
 ---
 title: "Introduktion til Livets Molekyler"
+listing:
+    type: table
+    contents: 
+        - "python_intro/te*/*.qmd"
+    fields: [title]
+    exclude:
+        title: "*Extra*"
 ---
+
+On this site you will find the exercises related to Python for the *Introduktion til Livets Molekyler* course. Use the sidebar or the table below to navigate the site. 
+
+
 

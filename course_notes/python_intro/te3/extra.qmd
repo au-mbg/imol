@@ -1,5 +1,5 @@
 ---
-title: Extra
+title: TØ 3. Extra
 ---
 
 ### Exercise: Functions, calling, assignment and scopes

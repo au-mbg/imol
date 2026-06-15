@@ -6,43 +6,36 @@ project:
 website:
   title: "Introduktion til Livets Molekyler"
   favicon: styling/favicon_io/favicon.ico
-  navbar:
-    left:
-      - href: python_intro/index.qmd
-        text: iMoL TØ
-        icon: house
   sidebar: 
-    - id: python-intro-sidebar
-      style: "docked"
+      style: "floating"
+      collapse-level: 1
       contents:
-        - section: "iMoL TØ"
-          contents:
-            - href: python_intro/python_intro.qmd
-              icon: code-slash
+          - href: python_intro/te1/intro.qmd
 
-            - section: "TØ 3. Variables & Functions"
-              href: python_intro/python_variables_functions.qmd
-              icon: code-slash
-              contents:
-                  - python_intro/python_variables_functions_extra.qmd
+          - section: "TØ 3. Variables & Functions"
+            href: python_intro/te3/variables_functions.qmd
+            contents:
+                - python_intro/te3/extra.qmd
 
-            - section: "TØ 4: Laboratory Exercise 1"
-              href: python_intro/python_lab_exercise_1.qmd
-              icon: flask
-              contents:
-                  - python_intro/python_lab_exercise_1_extra.qmd
+          - section: "TØ 4. Lab exercise 1"
+            href: python_intro/te4/lab_exercise_1.qmd
+            icon: flask
+            contents:
+                - python_intro/te4/extra.qmd
 
-            - section: "TØ 5: Data types"
-              icon: code-slash
-              href: python_intro/python_data_types.qmd
-              contents:
-                  - python_intro/python_data_types_extra.qmd
+          - section: "TØ 5. Data types"
+            href: python_intro/te5/data_types.qmd
+            contents:
+                - python_intro/te5/extra.qmd
 
-            - href: python_intro/python_working_with_data.qmd
-              icon: code-slash
+          - section: "TØ 7. Working with data"
+            href: python_intro/te7/working_with_data.qmd
+            contents:
+                - python_intro/te7/extra.qmd
 
-            - href: python_intro/python_lab_exercise_2.qmd
-              icon: flask
+          - href: python_intro/te9/lab_exercise_2.qmd
+            icon: flask
+            text: "TØ 9. Lab exercise 2"
 
 format:
   html:
