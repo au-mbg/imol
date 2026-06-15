@@ -12,17 +12,6 @@ pigments = pd.read_csv('../../datasets/curated_abs_dataset.csv')
 display(pigments)
 ```
 
-```{pyodide}
-#| echo: false
-
-import matplotlib.pyplot as plt
-import pandas as pd
-
-url = 'https://raw.githubusercontent.com/au-mbg/imol/refs/heads/main/course_notes/datasets/curated_abs_dataset.csv'
-
-pigments = pd.read_csv(url)
-```
-
 ## Data manipulations
 
 We often need to transform parts of our data - e.g. 
@@ -48,9 +37,9 @@ which can be computed with the formula
 $$
 E = \frac{1240}{\lambda}
 $$
-Where $E$ is the photon energy and $\lambda$ is the wavelength.
+Where $E$ is the photon energy and $\lambda$ is the wavelength in eV.
 
-Use the cell below to make this conversion
+In the cell below the dataset is available in the variable `pigments`, Use the cell to make this conversion to eV.
 
 ```{pyodide}
 #| exercise: convert_exercise

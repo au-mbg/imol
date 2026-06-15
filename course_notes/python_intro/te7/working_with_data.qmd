@@ -53,59 +53,7 @@ Use the cell below to plot some of the other columns of the dataset.
 Try to plot several columns at the same time.
 
 ```{pyodide}
-#| echo: false
-
-import matplotlib.pyplot as plt
-import pandas as pd
-
-url = 'https://raw.githubusercontent.com/au-mbg/imol/refs/heads/main/course_notes/datasets/curated_abs_dataset.csv'
-
-pigments = pd.read_csv(url)
-```
-
-```{pyodide}
-fig, ax = plt.subplots()
-
-# Your code for plotting here
-
-plt.show()
-```
-
-### Exercise: Interpreting plots
-
-Chlorophyll a is the main photosynthetic pigment, while chlorophyll b is an accessory pigment found in green algae and land plants. Use the plotted spectra to explain why having both pigments could be useful. 
-
-## Data manipulations
-
-We often need to transform parts of our data - e.g. 
-
-- Converting units
-- Calculating derived properties
-- Normalizing 
-
-Our dataset has the wavelength in nanometers, perhaps we would like to work with meters instead 
-
-```{python}
-pigments['wavelength_m'] = pigments['wavelength_nm'] * 10**(-9)
-```
-
-This is an example of an **element-wise operation** - every element of `pigments['wavelength_nm']`
-is multiplied by `10**(-9)`. 
-
-### Exercise: Converting to photon energy
-
-A more interesting unit conversion for this dataset would be to work with photon energy in eV, 
-which can be computed with the formula 
-
-$$
-E = \frac{1240}{\lambda}
-$$
-Where $E$ is the photon energy and $\lambda$ is the wavelength.
-
-Use the cell below to make this conversion
-
-```{pyodide}
-#| exercise: convert_exercise
+#| exercise: plotting
 #| setup: true
 
 import matplotlib.pyplot as plt
@@ -117,55 +65,61 @@ pigments = pd.read_csv(url)
 ```
 
 ```{pyodide}
-#| exercise: convert_exercise
-# Replace the blank line below with your code to make the conversion
-_______
-
-# Make a plot with the x-axis as photon energy 
+#| exercise: plotting
 fig, ax = plt.subplots()
 
-_______ 
+# Your code for plotting here
 
 plt.show()
 ```
 
-### Exercise: Mixture of pigments
-
 ```{pyodide}
-#| exercise: mixture_exercise
-#| setup: true  
+#| exercise: plotting
+#| check: true
 
-import matplotlib.pyplot as plt
-import pandas as pd
+def provide_feedback(envir_result):
 
-url = 'https://raw.githubusercontent.com/au-mbg/imol/refs/heads/main/course_notes/datasets/curated_abs_dataset.csv'
+  ax = envir_result.get('ax')
+  if ax is None:
+    return {"message": "You may have deleted the code that creates the figure and axis variables, reset the cell or add the code back in.", "correct": False}
+  elif not isinstance(ax, plt.Axes):
+    return {"message": "You have changed the <code>ax</code> variable to an incorrect type", "correct": False}
 
-pigments = pd.read_csv(url)
+  issues = []
+
+  if len(ax.lines) == 0:
+      issues.append("Add the data using <code>ax.plot(...)</code>.")
+
+  if not ax.get_xlabel().strip():
+      issues.append("Add a label to the x-axis using <code>ax.set_xlabel(...)</code>.")
+
+  if not ax.get_ylabel().strip():
+      issues.append("Add a label to the y-axis using <code>ax.set_ylabel(...)</code>.")
+
+  if issues:
+      feedback = {
+          "correct": False,
+          "type": "info",
+          "message": "<p>Your plot is not complete yet:</p><ul>"
+                    + "".join(f"<li>{issue}</li>" for issue in issues)
+                    + "</ul>"
+      }
+  else:
+      feedback = {
+          "correct": True,
+          "type": "success",
+          "message": "Congratulations you made a plot! Your code passes the checks and appears to produce a complete plot. Now inspect the plot carefully and confirm that the data, labels, and overall appearance match what you intended."
+      }
+
+  return feedback
+
+
+feedback = provide_feedback(envir_result)
+feedback
+
 ```
 
-We can approximate the absorbance of a mixture by using the equation 
+### Exercise: Interpreting plots
 
-$$
-A_{\mathrm{mixture}}(\lambda) = c_1 \cdot A_1(\lambda) + c_2 \cdot A_2(\lambda)
-$$
-Where $A$ are absorbances of each component of the mixture and $c_i$ are proportions of each component. Use this to calculate the absorbance of a mixture of 70% `chlorophyll-a` and 30% `chlorophyll-b` 
-
-```{pyodide}
-#| exercise: mixture_exercise
-# Calculate the mixture
-c1 = ______
-c2 = ______
-A_mixture = _______
-
-# Plot the mixture absorbance
-fig, ax = plt.subplots()
-
-x_data = pigments['wavelength_nm']
-ax.plot(x_data, pigments['chlorophyll-a'], label='c-a')
-ax.plot(x_data, pigments['chlorophyll-b'], label='c-b')
-______
-
-plt.show()
-```
-
+Chlorophyll a is the main photosynthetic pigment, while chlorophyll b is an accessory pigment found in green algae and land plants. Use the plotted spectra to explain why having both pigments could be useful. 
 
