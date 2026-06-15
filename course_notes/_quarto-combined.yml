@@ -1,0 +1,35 @@
+project:
+  type: book
+  output-dir: _site/downloads/
+
+book:
+  title: "IMoL Python course notes"
+  author: "Ditlev E. Brodersen & Mads-Peter V. Christiansen"
+  chapters:
+    - index.qmd
+    - python_intro/te1/intro.qmd
+    - python_intro/te3/variables_functions.qmd
+    - python_intro/te3/extra.qmd
+    - python_intro/te4/lab_exercise_1.qmd
+    - python_intro/te4/extra.qmd
+    - python_intro/te5/data_types.qmd
+    - python_intro/te5/extra.qmd
+    - python_intro/te7/working_with_data.qmd
+    - python_intro/te7/extra.qmd
+    - python_intro/te9/lab_exercise_2.qmd
+
+format:
+  typst:
+    pandoc:
+      filters:
+        - path: filters/static-pyodide.lua
+          at: pre-ast
+    toc: true
+    number-sections: true
+    number-depth: 2
+    toc-depth: 2
+    margin:
+      left: 2cm
+      right: 2cm
+      top: 2.5cm
+      bottom: 2.5cm

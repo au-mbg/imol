@@ -24,7 +24,9 @@ jobs:
         with:
           pixi-version: v0.66.0
           cache: true
-      - run: pixi run render
+      - run: |
+          pixi render-book
+          pixi render
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

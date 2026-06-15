@@ -10,6 +10,10 @@ env = { TYPST_FONT_PATHS = "$PIXI_PROJECT_ROOT/course_notes/styling/fonts" }
 
 [tasks]
 
+[tasks.render-book]
+cmd = "quarto render --profile combined"
+cwd = "course_notes"
+
 [tasks.render]
 cmd = "quarto render"
 cwd = "course_notes"

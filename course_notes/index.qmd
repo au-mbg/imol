@@ -11,5 +11,8 @@ listing:
 
 On this site you will find the exercises related to Python for the *Introduktion til Livets Molekyler* course. Use the sidebar or the table below to navigate the site. 
 
+For each page you can download it as either PDF or docx from the menu on the rightside - 
+alternatively you can [click here](downloads/IMoL-Python-course-notes.pdf) to download a combined version as pdf.
+
 
 
