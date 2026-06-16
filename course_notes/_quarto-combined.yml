@@ -7,16 +7,16 @@ book:
   author: "Ditlev E. Brodersen & Mads-Peter V. Christiansen"
   chapters:
     - index.qmd
-    - python_intro/te1/intro.qmd
-    - python_intro/te3/variables_functions.qmd
-    - python_intro/te3/extra.qmd
-    - python_intro/te4/lab_exercise_1.qmd
-    - python_intro/te4/extra.qmd
-    - python_intro/te5/data_types.qmd
-    - python_intro/te5/extra.qmd
-    - python_intro/te7/working_with_data.qmd
-    - python_intro/te7/extra.qmd
-    - python_intro/te9/lab_exercise_2.qmd
+    - python_intro/toe1/intro.qmd
+    - python_intro/toe3/variables_functions.qmd
+    - python_intro/toe3/extra.qmd
+    - python_intro/toe4/lab_exercise_1.qmd
+    - python_intro/toe4/extra.qmd
+    - python_intro/toe5/data_types.qmd
+    - python_intro/toe5/extra.qmd
+    - python_intro/toe7/working_with_data.qmd
+    - python_intro/toe7/extra.qmd
+    - python_intro/toe9/lab_exercise_2.qmd
 
 format:
   typst:
