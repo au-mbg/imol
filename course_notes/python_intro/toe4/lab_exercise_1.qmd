@@ -7,9 +7,9 @@ pyodide:
 ---
 
 In this session we will use Python to analysis data gathered in the laboratory. First we will
-start by using Python to [calculate statistics of pipette measurements](lab_exercise_1.qmd#mean-and-standard-deviation) and afterwards we will use Python calculate and plot the standard curve for [absorption measurements](lab_exercise_1.qmd#adsorption-measurements). 
+start by using Python to [calculate statistics of pipette measurements](lab_exercise_1.qmd#pipette-measurements) and afterwards we will use Python calculate and plot the standard curve for [absorption measurements](lab_exercise_1.qmd#adsorption-measurements). 
 
-## Pipette measurements {#sec-mean}
+## Pipette measurements
 
 In the laboratory, you carried out a pipetting exercise in which you had to measure the same volume three times in order to assess your precision (Exercise 1, protocol step 12).
 
@@ -108,7 +108,7 @@ feedback
 ```
 
 If you want to try writing a more general function for calculating the mean see 
-the [extra exercises](extra.qmd#mean-and-standard-deviation).
+the [extra exercises](extra.qmd#exercise-general-mean-function).
 
 ### Exercise: Analyzing the standard deviation
 
