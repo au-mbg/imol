@@ -6,6 +6,12 @@ pyodide:
     - openpyxl
 ---
 
+In this note we will work on the same dataset as the [main note](working_with_data.qmd) in 
+which we saw how to plot data. Now we will look at how to manipulate the data, starting by 
+converting the units of one column of the dataset and then doing a calculation that uses two columns. 
+
+Below is an excerpt of the dataset.
+
 ```{python}
 import pandas as pd
 pigments = pd.read_csv('../../datasets/curated_abs_dataset.csv')

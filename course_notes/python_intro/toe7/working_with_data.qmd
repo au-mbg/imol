@@ -6,8 +6,12 @@ pyodide:
     - openpyxl
 ---
 
-In this note we will explore some common operations when working with datasets. 
+In this note we will look at how to plot data from a dataset. 
 We will be using the dataset presented in this [paper](https://www.sciencedirect.com/science/article/pii/S2352340919302264?utm_source=chatgpt.com) on "the absorption characteristics of extracted phytoplankton pigments".
+
+We use a `DataFrame`, a collection type that is similar to a table/excel-sheet, to store the data. If you are interested in learning more about these you can look at the [extra material](../toe5/extra.qmd) for TØ5. This weeks [extra material](extra.qmd) dives into how to do calculations with a `DataFrame`. 
+
+The table below shows an excerpt of the dataset. The first column `wavelength_nm` is the wavelength in nanometers while the other columns are adsorptions measurements for different substances. 
 
 ```{python}
 import pandas as pd

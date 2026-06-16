@@ -10,30 +10,30 @@ website:
       style: "floating"
       collapse-level: 1
       contents:
-          - href: python_intro/te1/intro.qmd
+          - href: python_intro/toe1/intro.qmd
 
           - section: "TØ 3. Variables & Functions"
-            href: python_intro/te3/variables_functions.qmd
+            href: python_intro/toe3/variables_functions.qmd
             contents:
-                - python_intro/te3/extra.qmd
+                - python_intro/toe3/extra.qmd
 
           - section: "TØ 4. Lab exercise 1"
-            href: python_intro/te4/lab_exercise_1.qmd
+            href: python_intro/toe4/lab_exercise_1.qmd
             icon: flask
             contents:
-                - python_intro/te4/extra.qmd
+                - python_intro/toe4/extra.qmd
 
           - section: "TØ 5. Data types"
-            href: python_intro/te5/data_types.qmd
+            href: python_intro/toe5/data_types.qmd
             contents:
-                - python_intro/te5/extra.qmd
+                - python_intro/toe5/extra.qmd
 
           - section: "TØ 7. Working with data"
-            href: python_intro/te7/working_with_data.qmd
+            href: python_intro/toe7/working_with_data.qmd
             contents:
-                - python_intro/te7/extra.qmd
+                - python_intro/toe7/extra.qmd
 
-          - href: python_intro/te9/lab_exercise_2.qmd
+          - href: python_intro/toe9/lab_exercise_2.qmd
             icon: flask
             text: "TØ 9. Lab exercise 2"
 

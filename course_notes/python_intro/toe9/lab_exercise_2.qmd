@@ -6,8 +6,6 @@ pyodide:
     - openpyxl
 ---
 
-## Exercise: Analysis of enzyme kinetics LØ data. 
-
 In this exercise you will analyze the data you've recorded in the laboratory. You will
 not be writing any Python code yourself - but you will walk through each of the step
 of analyzing this dataset. 
@@ -15,6 +13,20 @@ of analyzing this dataset.
 In the "Fysiskbiokemi & Datanalayse"-course you will learn more about the theory behind 
 this analysis and about the details of performing the analysis with Python. 
 
+## Enzyme Kinetics
+
+The diagram below describes the workflow we will be performing 
+
+```{mermaid}
+flowchart LR
+
+    data[Load data]
+    convert[Converting units]
+    slopes[Calculate reaction velocity]
+    michealis[Michealis-Menten fit]
+
+    data --> convert --> slopes --> michealis
+```
 
 ### Importing the data
 
@@ -200,7 +212,7 @@ What happens to the slope of the curves as substrate concentration increases?
 
 
 
-### Finding slopes
+### Calculate reaction velocity
 
 Hopefully what you see in the plot of concentrations vs. time are approximately linear relationships, as 
 the next step is to find the slope of each of these - as that describes the initial reaction 

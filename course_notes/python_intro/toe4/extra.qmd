@@ -2,7 +2,15 @@
 title: TØ 4. Extra
 ---
 
+This note contains additional exercises related to laboratory exercise 1. 
+
 ## Mean and standard deviation {#mean-std}
+
+For the [pipette exercise](lab_exercise_1.qmd#pipette-measurements) we implemented a 
+function to calcualte the mean of three values. 
+
+The exercise belows explores how to create a more general function that calculates the 
+mean of any number of values. 
 
 ### Exercise: General mean function
 

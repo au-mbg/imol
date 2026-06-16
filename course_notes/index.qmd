@@ -3,7 +3,7 @@ title: "Introduktion til Livets Molekyler"
 listing:
     type: table
     contents: 
-        - "python_intro/te*/*.qmd"
+        - "python_intro/toe*/*.qmd"
     fields: [title]
     exclude:
         title: "*Extra*"

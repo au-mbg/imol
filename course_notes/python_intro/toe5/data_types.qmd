@@ -5,6 +5,11 @@ title: TØ 5. Data types
 One of the most useful aspects of Python is the ability to work with complex datasets. 
 However, to do so it is useful to understand a little bit about **data types**. 
 
+In the end a computer stores everything as a binary sequence e.g. `0101001` but Python (and many other programming langauges) add abstractions that makes it easier to reason about our programs. 
+We will start by exploring some primary data types and then look at a simple collection type, the list. 
+
+In the [extra material](extra.qmd) we explore other types of collections, namely arrays and dataframes. 
+
 ## The primary data types. 
 
 We will consider three primary data types 
@@ -59,14 +64,56 @@ The `len` function is incredibly useful - here we used it to return the number o
 
 #### mRNA codons 
 
-Which data type would it be natural to use for the **number of codons** in the mRNA? 
+Use the cell the below to calculate the number of codons in the mRNA
 
 ```{pyodide}
+#| exercise: codons
 mrna = "GCAUGCCGUUUGGAUGACCG"
 sequence_length = len(mrna)
+number_of_codons = ______
 
-print("The sequence has length:", sequence_length)
+print("Number of codons:", number_of_codons)
 ```
+
+```{pyodide}
+#| exercise: codons
+#| check: true
+
+correct_number = (len(mrna)-2) / 3
+
+if number_of_codons == correct_number:
+    feedback = {"correct": True, "message": "That is correct!"}
+elif number_of_codons % 1 != 0:
+    feedback = {"correct": False, "message": "That is not quite right. Have you taken into account that there are bases in the sequence before the start codon?"}
+else:
+    feedback = {"correct": False, "message": "That is not quite right, try again."}
+feedback
+```
+
+::: {.callout-note title="Division and floats" collapse="true"} 
+
+You may have notice that the number printed above is a float not an integer.
+
+This is because Python converts division of integers into floats, for example 
+
+```{python}
+numerator = 10
+denominator = 5
+print(numerator / denominator)
+```
+
+If we know that we want an integer we can either convert back to int or use a different division 
+operation 
+
+```{python}
+numerator = 10
+denominator = 5
+print(numerator // denominator)
+```
+
+::: 
+
+
 
 ## Data collections: Lists 
 
