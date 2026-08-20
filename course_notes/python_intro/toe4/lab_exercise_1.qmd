@@ -55,6 +55,17 @@ print(test)
 
 ### Exercise: Calculating the mean and standard deviation
 
+::: {.callout-note title="mean_func & std_func"}
+In the cell below you will use `mean_func` that you defined before and `std_func` which calculates the standard deviation 
+
+The `std_func`-function works in the same way your mean `mean_func`. It takes three numbers as input and returns one number, the standard deviation.
+
+```python
+std_func(1, 2, 3) # This returns 0.816496...
+```
+
+::: 
+
 In the cell below the two functions `mean_func` and `std_func` are available. 
 
 Start by setting the variables `x1`, `x2`, `x3` equal to your measurements, 
@@ -164,7 +175,7 @@ else:
     display(df)
 ```
 
-This loads the data as a `pd.DataFrame` which will be [touched on later](../te5/extra.qmd) and used extensively in other courses.
+This loads the data as a `pd.DataFrame` which will be [touched on later](../toe5/extra.qmd) and used extensively in other courses.
 
 The next cell calculates the mean and the standard deviation across the replicates
 
