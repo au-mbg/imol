@@ -24,9 +24,14 @@ jobs:
         with:
           pixi-version: v0.72.1
           cache: true
-      - run: |
-          pixi r render
-          pixi r render-book
+
+      - name: Render website
+        timeout-minutes: 10
+        run: pixi r render
+
+      - name: Render combined notes PDF
+        timeout-minutes: 10
+        run: pixi r render-book
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
