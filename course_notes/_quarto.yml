@@ -46,3 +46,6 @@ format:
       light: cosmo
       dark: [darkly, styling/theme-dark.scss]
     respect-user-color-scheme: true
+
+execute:
+  cache: true

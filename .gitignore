@@ -10,11 +10,12 @@ wheels/
 .venv
 
 # Quarto-generated files
-
 course_notes/.quarto/
 **/*.quarto_ipynb*
 **/*/*.quarto_ipynb*
 course_notes/_site/
+.jupyter_cache
+
 # pixi environments
 .pixi/*
 !.pixi/config.toml
