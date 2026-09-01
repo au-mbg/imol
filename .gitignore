@@ -11,10 +11,13 @@ wheels/
 
 # Quarto-generated files
 course_notes/.quarto/
+course_notes/*/*/*_files
+course_notes/*/*/*/*_files
 **/*.quarto_ipynb*
 **/*/*.quarto_ipynb*
 course_notes/_site/
 .jupyter_cache
+quarto-render-debug.log
 
 # pixi environments
 .pixi/*

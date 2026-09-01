@@ -18,6 +18,11 @@ cwd = "course_notes"
 cmd = "quarto render"
 cwd = "course_notes"
 
+[tasks.render-debug]
+cmd = "quarto check && quarto render --log-level debug --log ../quarto-render-debug.log"
+cwd = "course_notes"
+env = { QUARTO_LOG_LEVEL = "DEBUG", QUARTO_PRINT_STACK = "true", QUARTO_JUPYTER_FLUSH_LOGS = "true" }
+
 [tasks.preview]
 cmd = "quarto preview"
 cwd = "course_notes"
@@ -26,6 +31,7 @@ cwd = "course_notes"
 cmd = """
 rm -rf python_intro/*.quarto_ipynb*
 rm -rf python_intro/*/*.quarto_ipynb*
+rm -rf python_intro/*/*_files
 """
 cwd = "course_notes"
 

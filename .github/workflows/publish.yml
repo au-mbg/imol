@@ -30,7 +30,7 @@ jobs:
 
       - name: Render website
         timeout-minutes: 10
-        run: pixi r render
+        run: pixi r render-debug
 
       - name: Render combined notes PDF
         timeout-minutes: 10
@@ -40,6 +40,17 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: course_notes/_site
+
+      - name: Upload render diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quarto-render-diagnostics
+          if-no-files-found: warn
+          path: |
+            quarto-render-debug.log
+            ~/.local/share/quarto/logs/
+            course_notes/**/*.quarto_ipynb*
 
   deploy:
     needs: build
