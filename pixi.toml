@@ -23,7 +23,10 @@ cmd = "quarto preview"
 cwd = "course_notes"
 
 [tasks.clean]
-cmd = "rm -rf python_intro/*.quarto_ipynb"
+cmd = """
+rm -rf python_intro/*.quarto_ipynb*
+rm -rf python_intro/*/*.quarto_ipynb*
+"""
 cwd = "course_notes"
 
 [dependencies]

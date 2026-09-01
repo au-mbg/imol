@@ -25,6 +25,9 @@ jobs:
           pixi-version: v0.72.1
           cache: true
 
+      - name: Quarto check
+        run: pixi r quarto check
+
       - name: Render website
         timeout-minutes: 10
         run: pixi r render

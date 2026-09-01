@@ -12,7 +12,8 @@ wheels/
 # Quarto-generated files
 
 course_notes/.quarto/
-**/*.quarto_ipynb
+**/*.quarto_ipynb*
+**/*/*.quarto_ipynb*
 course_notes/_site/
 # pixi environments
 .pixi/*
