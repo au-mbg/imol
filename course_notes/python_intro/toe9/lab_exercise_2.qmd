@@ -1,5 +1,6 @@
 ---
 title: TØ 9. Laboratory Exercise 2
+jupyter: false
 pyodide:
   packages:
     - pandas
