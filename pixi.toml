@@ -27,7 +27,7 @@ cmd = "rm -rf python_intro/*.quarto_ipynb"
 cwd = "course_notes"
 
 [dependencies]
-python = ">=3.14.4,<3.15"
+python = ">=3.13,<3.14"
 quarto = ">=1.9.38,<2"
 openpyxl = ">=3.1.5,<4"
 scipy = ">=1.17.1,<2"
