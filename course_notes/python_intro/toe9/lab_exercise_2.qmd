@@ -32,6 +32,8 @@ flowchart LR
 
 The button below allows you to import your LØ dataset by uploading the `.xlsx`-file. 
 
+Start by uploading your dataset without an enzyme present. 
+
 ::: {.upload-panel}
 
 ```{ojs}
@@ -49,6 +51,19 @@ xlsx_bytes = xlsx_file
 ```
 
 :::
+
+::: {.callout-caution collapse="true" title="Dataset shape"}
+
+The dataset needs to be an excel file `.xlsx` where the first column is time in seconds and 
+the other columns of the first row are substrate concentrations in $\mathrm{mM}$ with 
+absorbance measurements at the time specified in first column down the column. 
+
+An example of the expected data shape is shown in the figure below. Note that you can have fewer 
+or more measurements for each substrate concentration - that is you don't need to have measurements at the exact times specified in the example.
+
+![Example of kinetics dataset](kinetics_example.png){.lightbox}
+:::
+
 
 ```{pyodide}
 #| echo: false
@@ -411,3 +426,6 @@ def plot_michealis_menten(km, vmax, substrate, slopes):
 ::: {.callout-important title="Question"}
 What is an explanantion of this behaviour based on enzymekinetics? 
 ::: 
+
+
+Once you've analyzed one of your datasets so you can refresh ({{< kbd mac=Command-R win=Control-R >}}) the page to analyze another dataset. 

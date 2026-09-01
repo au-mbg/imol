@@ -128,9 +128,9 @@ What does the standard deviation tell you about your precision?
 If the standard deviation is high, what could this be due to in your pipetting?
 
 
-## Adsorption measurements
+## Adsorbance measurements
 
-In the laboratory you made adsorption measurements, now you will use Python to make a standard curve from these measurements. Start by uploading your measurements 
+In the laboratory you made adsorbance measurements, now you will use Python to make a standard curve from these measurements. Start by uploading your measurements 
 
 ::: {.upload-panel}
 
@@ -149,6 +149,16 @@ xlsx_bytes = xlsx_file
 ```
 
 :::
+
+::: {.callout-caution collapse="true"}
+The dataset needs to be an excel file `.xlsx` and it needs to have four columns: `conc`, `m1`, `m2` and `m3` in that order. The unit of the concentration `conc` is expected to be $\mu\mathrm{M}$
+
+See the figure below if you have trouble
+
+![Expected dataset shape.](absorbance_excel_example.png){.lightbox}
+
+:::
+
 
 ```{pyodide}
 #| echo: false
@@ -182,12 +192,12 @@ The next cell calculates the mean and the standard deviation across the replicat
 
 ```{pyodide}
 mean = df[["m1", "m2", "m3"]].mean(axis=1)
-std = df[["m1", "m2", "m3"]].mean(axis=1)
+std = df[["m1", "m2", "m3"]].std(axis=1)
 
 pd.DataFrame({"conc": df["conc"], "mean": mean, "std": std})
 ```
 
-And now we can plot it the standard curve
+And now we can plot the standard curve
 
 ```{pyodide}
 # Create the plotting window
@@ -199,7 +209,7 @@ ax.errorbar(df['conc'], mean, yerr=std,
 
 # Plot customization
 ax.set_xlabel("Concentration (µM)")
-ax.set_ylabel("Absorption (A400)")
+ax.set_ylabel("Absorbance (A400)")
 ax.set_title("Average adsorption vs concentration")
 ax.legend()
 
