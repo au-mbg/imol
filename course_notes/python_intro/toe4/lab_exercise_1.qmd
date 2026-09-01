@@ -7,7 +7,7 @@ pyodide:
 ---
 
 In this session we will use Python to analysis data gathered in the laboratory. First we will
-start by using Python to [calculate statistics of pipette measurements](lab_exercise_1.qmd#pipette-measurements) and afterwards we will use Python calculate and plot the standard curve for [absorption measurements](lab_exercise_1.qmd#adsorption-measurements). 
+start by using Python to [calculate statistics of pipette measurements](lab_exercise_1.qmd#pipette-measurements) and afterwards we will use Python calculate and plot the standard curve for [absorption measurements](lab_exercise_1.qmd#adsorbance-measurements)
 
 ## Pipette measurements
 
@@ -210,7 +210,7 @@ ax.errorbar(df['conc'], mean, yerr=std,
 # Plot customization
 ax.set_xlabel("Concentration (µM)")
 ax.set_ylabel("Absorbance (A400)")
-ax.set_title("Average adsorption vs concentration")
+ax.set_title("Average absorbance vs concentration")
 ax.legend()
 
 # Display the plot

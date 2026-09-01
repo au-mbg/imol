@@ -11,7 +11,7 @@ We will be using the dataset presented in this [paper](https://www.sciencedirect
 
 We use a `DataFrame`, a collection type that is similar to a table/excel-sheet, to store the data. If you are interested in learning more about these you can look at the [extra material](../toe5/extra.qmd) for TØ5. This weeks [extra material](extra.qmd) dives into how to do calculations with a `DataFrame`. 
 
-The table below shows an excerpt of the dataset. The first column `wavelength_nm` is the wavelength in nanometers while the other columns are adsorptions measurements for different substances. 
+The table below shows an excerpt of the dataset. The first column `wavelength_nm` is the wavelength in nanometers while the other columns are absorption measurements for different substances. 
 
 ```{python}
 import pandas as pd
@@ -38,7 +38,7 @@ ax.plot(pigments['wavelength_nm'],
 
 # These are settings to make the plot look nice
 ax.set_xlabel('Wavelength [nm]') # <2>
-ax.set_ylabel('Adsorption')
+ax.set_ylabel('Absorption')
 
 ax.legend() # <3> 
 

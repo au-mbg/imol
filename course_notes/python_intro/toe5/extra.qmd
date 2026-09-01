@@ -67,7 +67,7 @@ We can go one step further and work with `DataFrames` which are kind of an exten
 ```{python}
 import pandas as pd
 
-df = pd.DataFrame({'wavelengths': [400, 401], 'adsorptions': [2.451, 2.532]})
+df = pd.DataFrame({'wavelengths': [400, 401], 'absorbance': [2.451, 2.532]})
 print(df)
 ```
 

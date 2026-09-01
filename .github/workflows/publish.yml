@@ -30,7 +30,7 @@ jobs:
 
       - name: Render website
         timeout-minutes: 10
-        run: pixi r render-debug
+        run: pixi r render
 
       - name: Render combined notes PDF
         timeout-minutes: 10
