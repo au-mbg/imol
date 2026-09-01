@@ -7,7 +7,7 @@ pyodide:
 ---
 
 In this session we will use Python to analysis data gathered in the laboratory. First we will
-start by using Python to [calculate statistics of pipette measurements](lab_exercise_1.qmd#pipette-measurements) and afterwards we will use Python calculate and plot the standard curve for [absorption measurements](lab_exercise_1.qmd#adsorbance-measurements)
+start by using Python to [calculate statistics of pipette measurements](lab_exercise_1.qmd#pipette-measurements) and afterwards we will use Python calculate and plot the standard curve for [absorbance measurements](lab_exercise_1.qmd#absorbance-measurements)
 
 ## Pipette measurements
 
@@ -128,9 +128,9 @@ What does the standard deviation tell you about your precision?
 If the standard deviation is high, what could this be due to in your pipetting?
 
 
-## Adsorbance measurements
+## Absorbance measurements
 
-In the laboratory you made adsorbance measurements, now you will use Python to make a standard curve from these measurements. Start by uploading your measurements 
+In the laboratory you made absorbance measurements, now you will use Python to make a standard curve from these measurements. Start by uploading your measurements 
 
 ::: {.upload-panel}
 
