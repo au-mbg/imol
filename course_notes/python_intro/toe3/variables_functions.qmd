@@ -297,7 +297,7 @@ Someone has implemented the function below to do so, but it is incorrect - your 
 #| check: true
 
 checks = [((152, 16, 2, 2), 42), 
-        ((1, 1, 1, 1), 1)
+        ((1, 1, 1, 1), 1),
         ((2, 2, 1, 1), 2)
         ]
 
